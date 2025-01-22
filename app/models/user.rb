@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :first_name, :last_name,presence: true, on: :create
-  validates :email,presence: true,uniqueness: true, format: Devise.email_regexp,on: :create
+  validates :username, presence: true, on: :create
+  validates :email,presence: true, uniqueness: true, format: Devise.email_regexp,on: :create
   enum :role,[:User,:Instructor]
 
   def full_name
