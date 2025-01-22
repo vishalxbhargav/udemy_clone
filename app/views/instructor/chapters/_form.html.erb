@@ -1,0 +1,21 @@
+<div class="pt-5">
+    <%= form_with model: [:instructor,:course,chapter] do |form|%>
+        <div class="py-3">
+            <p><%=form.label :title%></p>
+            <%=form.text_field :title, placeholder:"Enter your Chapter title...", autocomplete: "title",class:"h- w-[30rem] rounded focus:outline-0 border placeholder:text-sm pl-2"%>
+        </div>
+        <div class="py-3">
+            <p><%=form.label :video%></p>
+            <%=form.file_field :video,placeholder:"Enter your Chapter video...", autocomplete: "video",class:""%>
+        </div>
+        <div class="py-3">
+            <p><%=form.label :docs%></p>
+            <%=form.file_field :docs,multiple: true, placeholder:"Enter your Chapter video...", autocomplete: "video",class:""%>
+        </div>
+    
+        <div class="flex items-center justify-evenly py-2  ">
+        <%= form.submit "Create Chapter", class:" py-3 px-5 bg-blue-500 rounded-lg text-white transition-all cursor-pointer hover:scale-105 "%>
+        <%= link_to "Cencel", instructor_course_path(chapter.course), class:" py-3 px-5 bg-gray-500 rounded-lg text-white transition-all cursor-pointer hover:scale-105 "%>
+      </div>
+    <%end%>
+</div>

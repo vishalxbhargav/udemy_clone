@@ -1,0 +1,16 @@
+<% if current_user.role!="Instructor"%>
+    <div class="h-screen w-screen text-lg font-bold flex justify-center items-center">Only Instructor can access this page</div>
+<%else%>
+    <div class="w-screen h-screen flex">
+        <div class="w-[20%]">
+            <div>
+                <% ["My Courses","Add New Course","Revenue"].each do |ele|%>
+                    <p><%=ele%></p>
+                <%end%>
+            </div>
+        </div>
+        <div class="h-screen w-[80%]">
+            <%= render "components/my_courses" %>
+        </div>
+    </div>
+<%end%>

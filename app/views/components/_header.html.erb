@@ -14,10 +14,22 @@
             search
         </div>
         <div>
-            <% if !user_signed_in? %>
-            <p class="py-1 px-3 text-center rounded text-white bg-blue-500"><%= link_to "Login", new_user_session_path%></p>
+            <% if user_signed_in? %>
+                <div class="flex justify-between">
+                    <div class="flex justify-between items-center px-3">
+                        <% if current_user.role=="Instructor"%>
+                            <%= link_to  instructor_path do %>
+                                <p class="px-2 py-1 rounded-lg transition-all hover:bg-black hover:rounded-lg hover:text-white cursor-pointer">Instructor</p>
+                            <%end%>
+                        <%else%>
+                            <p class="px-2 py-1 rounded-lg transition-all hover:bg-black hover:rounded-lg hover:text-white cursor-pointer">My Learning</p>
+                        <%end%>
+                    </div>
+                     <p class="py-1 px-3 text-center text-white rounded bg-blue-500"><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-white" %></p>
+                </div>
+                
             <%else%>
-                <p class="py-1 px-3 text-center text-white rounded bg-blue-500"><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-white" %></p>
+                <p class="py-1 px-3 text-center rounded text-white bg-blue-500"><%= link_to "Login", new_user_session_path%></p>
             <%end%>
         </div>
     </div>
