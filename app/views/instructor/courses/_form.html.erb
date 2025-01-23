@@ -20,6 +20,10 @@
             <p><%=form.label :price%></p>
             <%=form.number_field :price, placeholder:"Enter your course price...", autocomplete: "description",class:"h-8 rounded focus:outline-0 border placeholder:text-sm pl-2"%>
         </div>
+        <div>
+            <p><%= form.label :category%></p>
+            <%= form.collection_select :category_id, Category.order(:name), :id, :name %>
+        </div>
         <div class="flex items-center justify-evenly py-2  ">
         <%= form.submit "Create Course", class:" py-3 px-5 bg-blue-500 rounded-lg text-white transition-all cursor-pointer hover:scale-105 "%>
         <%= link_to "Cencel", instructor_path, class:" py-3 px-5 bg-gray-500 rounded-lg text-white transition-all cursor-pointer hover:scale-105 "%>

@@ -25,7 +25,7 @@ class Instructor::CoursesController < ApplicationController
             redirect_to new_instructor_course_path(@course),notice: @course.errors
         end
     end
-    
+
     def create
         @course=current_user.courses.build(course_params)
         if @course.save
@@ -36,7 +36,6 @@ class Instructor::CoursesController < ApplicationController
     end
     
     def destroy
-        debugger
         if @course.destroy
             redirect_to instructor_path,notice:"Course deleted successfully" 
         else
@@ -52,7 +51,7 @@ class Instructor::CoursesController < ApplicationController
     end
 
     def course_params
-        params.require(:course).permit( :title, :description, :course_content,:price,:thumbnail)
+        params.require(:course).permit( :title, :description, :course_content,:price,:thumbnail, :category_id)
     end
 
 end
