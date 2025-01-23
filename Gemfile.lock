@@ -113,7 +113,14 @@ GEM
       railties (>= 5.0.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
+    ffi (1.17.1-aarch64-linux-gnu)
+    ffi (1.17.1-aarch64-linux-musl)
+    ffi (1.17.1-arm-linux-gnu)
+    ffi (1.17.1-arm-linux-musl)
+    ffi (1.17.1-arm64-darwin)
+    ffi (1.17.1-x86_64-darwin)
     ffi (1.17.1-x86_64-linux-gnu)
+    ffi (1.17.1-x86_64-linux-musl)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
     fugit (1.11.1)
@@ -202,6 +209,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
+    plyr-rails (3.5.6)
     propshaft (1.1.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -401,6 +409,7 @@ DEPENDENCIES
   jbuilder
   kamal
   pg (~> 1.1)
+  plyr-rails
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)

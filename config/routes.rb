@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "home#index"
   get "/instructor",to:"instructor#index"
+  get "/instructor/dashboard",to:"instructor#dashboard"
   namespace :instructor do
     resources :courses do
       resources :chapters, shallow: true

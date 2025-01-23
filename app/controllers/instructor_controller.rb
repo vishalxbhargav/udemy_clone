@@ -3,4 +3,6 @@ class InstructorController < ApplicationController
     layout "instructor"
     def index 
     end
+    def dashboard
+    end
 end

@@ -1,0 +1,22 @@
+<div class="h-full w-full flex flex-col ">
+    <div class="h-[8%] w-[100%] border-b flex justify-evenly items-center">
+            <p class="h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded"><%= link_to "Edit", edit_instructor_chapter_path(@chapter) %></p>
+            <%= link_to 'Delete', instructor_chapter_path(@chapter), data: { turbo_method: :delete },class:"h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded" %>
+            <%= link_to 'Back', 'javascript:history.go(-1);', class:"h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded"%>
+        </div>
+   <div class="h-[70%] w-full flex-col flex justify-center items-center ">
+   <h1><%=@chapter.title%></h1>
+        <div class="h-[80%] w-[80%] ">
+           <video id="player" playsinline controls >
+            <source src=<%= url_for(@chapter.video)%> type="video/mp4" />
+        </div>
+       
+        
+         <div>
+            <%@chapter.docs do |doc|%>
+                <p><%= link_to "Docs", url_for(doc) %></p>
+            <%end%>
+        </div>
+   </div>
+   
+</div>

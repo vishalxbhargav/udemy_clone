@@ -25,7 +25,7 @@
   </head>
 
   <body>
-    <main class="h-screen w-screen">
+   <main class="h-screen w-screen">
     <div>
       <% if current_user.role!="Instructor"%>
         <div class="h-screen w-screen text-lg font-bold flex justify-center items-center">
@@ -54,7 +54,7 @@
                         <%= link_to "Add New Course", new_instructor_course_path%>
                       </div>
                       <div class="py-2 px-4 inline-block hover:bg-gray-100 rounded-lg">
-                        <%= link_to "DashBoard", instructor_dashboard_path%>
+                        <%= link_to "DashBoard", instructor_path%>
                       </div>
                     </div>
                   </div>
