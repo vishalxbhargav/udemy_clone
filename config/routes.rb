@@ -3,6 +3,15 @@ Rails.application.routes.draw do
   root "home#index"
   get "/instructor",to:"instructor#index"
   get "/instructor/dashboard",to:"instructor#dashboard"
+
+  namespace :student do
+    get "/enrollment/:id", to:"enrollment#course"
+    post "/enrollment/:id", to:"enrollment#enrolled"
+    get "/my_learning", to:"enrollment#my_learning"
+    get "/transaction_history",to: "enrollment#transaction_history"
+    get "/dashboard",to: "enrollment#dashboard"
+    get "/enrolled_course/:id",to: "enrollment#enrolled_course"
+  end
   namespace :instructor do
     resources :courses do
       resources :chapters, shallow: true

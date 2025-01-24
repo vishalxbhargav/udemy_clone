@@ -1,7 +1,9 @@
 <div class="h-full w-full flex flex-col bg-blue-200">
    <div class="h-[70%] w-full flex-col flex justify-center items-center bg-orange-200">
-        <div class="h-[80%] w-[80%] bg-white">video</div>
-        <h1>title</h1>
+        <div class="h-[80%] w-[80%] bg-white">
+          <%= video_tag chapter.video  ,class:"w-full h-full " %>
+        </div>
+        <h1><%=chapter.title%></h1>
    </div>
    <div class="h-[30%] text-white w-full flex justify-center items-center bg-black ">
         edit,delete
