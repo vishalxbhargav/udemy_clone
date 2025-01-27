@@ -1,7 +1,7 @@
 <div class="flex flex-col items-center">   
     <h1>Search result</h1>
     <div class="container mx-auto px-4">
-        <%if @courses.any?%>
+        <%unless @courses.nil?%>
             <%@courses.each do |course|%>
                 <%= link_to student_path(course) do %>
                     <div class="border-b">

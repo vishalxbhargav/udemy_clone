@@ -1,0 +1,11 @@
+<%=form_with url:"/forume/" , method: :post do |form|%>
+<div>
+    <p><%=form.label :title%></p>
+    <%=form.text_field :title%>
+</div>
+<div>
+    <p><%=form.label :description%></p>
+    <%=form.text_field :description%>
+</div>
+<%=form.submit "Creata Question"%>
+<%end%>

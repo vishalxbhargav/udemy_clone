@@ -6,6 +6,7 @@ class Course < ApplicationRecord
     has_many :chapters,dependent: :destroy
     has_many :enrollments
     has_many :enrolled_users, through: :enrollments,source: :user
+    has_one :forume, dependent: :delete
 
     validates :thumbnail,presence: true, on: :create
     validates :category_id, presence: true, on: :create

@@ -18,6 +18,16 @@ Rails.application.routes.draw do
       resources :chapters, shallow: true
     end
   end
+  #forume routes
+
+  get "/forume/:id",to:"forumes#index"
+ 
+
+  #answer routes for quetion
+  get "/forume/:course_id/question/:id", to: "questions#index"
+  get "/forume/:course_id/question/new", to:"question#show"
+  post "/forume/:course_id/question", to:"questions#create"
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

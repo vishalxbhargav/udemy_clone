@@ -1,4 +1,5 @@
 class Student::EnrollmentController < ApplicationController
+    before_action :authenticate_user!,except: [ :course]
     layout "student", except: [:course]
 
     before_action :set_course,only: [:course,:enrolled, :enrolled_course]

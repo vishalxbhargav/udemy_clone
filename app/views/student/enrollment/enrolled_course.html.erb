@@ -14,6 +14,7 @@
         <div class="h-screen w-[80%]"> 
             <div class="h-[8%] w-[100%] border-b flex justify-evenly items-center">
                 <%= link_to 'Back', 'javascript:history.go(-1);', class:"h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded"%>
+                <%= link_to "Forume","/forume/#{@course.id}", class:"h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded"%>
             </div>
             <%= render "components/chapter_content", chapter: @course.chapters[0] %>
         </div>

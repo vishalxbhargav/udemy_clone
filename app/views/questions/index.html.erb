@@ -1,0 +1,32 @@
+<div class="h-screen w-screen ">
+    <div class="w-full border">
+        <div class="px-4 py-2 bg-gray-200">
+            <p class="text-[1.4rem] leading-2 border-b"><%=@question.title%></p>
+            <p><%=@question.description%></p>
+        </div>
+    </div>
+    <div>
+        <div class="w-full flex py-2">
+        <div>
+        </div>
+            <p class="py-2 px-4 bg-blue-500  rounded-lg text-white cursor-pointer transition-all ease-out hover:scale-105">Write Answer</p>
+        <div>
+            <p>List of Answer</p>
+            <div class="px-2 py-4 flex flex-col gap-4 ">
+                <%if @question.answers.any?%>
+                    <%@question.answers.all.each do |answer|%>
+                    <div >
+                    </div>
+                    <%= link_to  "/forume/#{@course.id}/question/#{answer.id}" do %>
+                        <div class=" border rounded-lg py-2 px-4 ">
+                                <p class=""><%=answer.content%></p>
+                        </div>
+                    <%end%>
+                    <%end%>
+                <%else%>
+                    <p>Don't have any quetions</p>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

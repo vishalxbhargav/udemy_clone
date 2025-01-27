@@ -9,7 +9,8 @@ class HomeController < ApplicationController
     private 
 
     def search_result
-        title=Course.arel_table[:title]
-        @courses=Course.where(title.matches("%#{params[:query]}%"))
+        query=params[:query]
+        query.strip
+        Course.where("title LIKE ?","%"+query + "%") unless query.empty?
     end
 end

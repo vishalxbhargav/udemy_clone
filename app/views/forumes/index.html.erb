@@ -1,0 +1,37 @@
+<div class="h-screen w-screen ">
+    <div class="h-[10%] flex justify-center items-center  text-xl border-b"><%=@course.title%></div>
+    <div class="w-full h-[90%] flex">
+        <div class="w-[20%] h-full border-r">
+            <div class="h-[90%] w-[90%] flex flex-col justify-between items-center py-4">
+                <p>item</p>
+                <p>item2</p>
+                <p>item</p>
+                <p>item2</p>
+            </div>
+        </div>
+        <div class="w-[80%] h-full overflow-auto">
+            <div class="w-full h-[10%] px-4 ">
+                <div class="py-2">
+                <p class="py-2 px-4 bg-blue-500 rounded-lg text-white inline-block" ><%= link_to "Write Answer","/forume/#{@course.id}/question/new" %></p>
+                </div>
+               <div class="pt-2">
+                    <p clas="pt-2">List of questions</p>
+                    <div class="px-2 py-4 flex flex-col gap-4 ">
+                        <div data-question-target="result">
+                        </div>
+                        <%if @course.forume.questions.any?%>
+                            <%@course.forume.questions.all.each do |question|%>
+                            <%= link_to  "/forume/#{@course.id}/question/#{question.id}" do %>
+                                
+                                <%= render "components/question",question: question %>
+                            <%end%>
+                            <%end%>
+                        <%else%>
+                            <p>Don't have any quetions</p>
+                        <%end%>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
