@@ -1,0 +1,10 @@
+<div>
+    <p class="py-4 px-2 text-2xl">All Enrolled Courses</p>
+    <div class="px-4 flex flex-wrap">
+        <%current_user.enrolled_courses.each do |course|%>
+            <%= link_to "enrolled_course/#{course.id}" do %>
+                <%= render "components/course",course: course %>
+            <%end%>
+        <%end%>
+    </div>
+</div>

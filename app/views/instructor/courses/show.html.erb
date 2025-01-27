@@ -1,0 +1,50 @@
+<% if current_user.role!="Instructor"%>
+    <div class="h-screen w-screen text-lg font-bold flex justify-center items-center">Only Instructor can access this page</div>
+<%else%>
+    <div class="w-full h-full flex flex-col justify content">
+        <div class="h-[8%] w-[100%] border-b flex justify-evenly items-center">
+            <p class="h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded"><%= link_to "Edit", edit_instructor_course_path(@course) %></p>
+            <%= link_to 'Delete', instructor_course_path(@course), data: { turbo_method: :delete },class:"h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded" %>
+        </div>
+        <div class="h-[92%] flex ">
+            <div class="w-[60%] overflow-auto [&::-webkit-scrollbar]:w-2
+                        [&::-webkit-scrollbar-track]:rounded-full
+                        [&::-webkit-scrollbar-track]:bg-gray-100
+                        [&::-webkit-scrollbar-thumb]:rounded-full
+                        [&::-webkit-scrollbar-thumb]:bg-gray-300
+                        dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+                        dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
+                <div class="w-full h-[40%]">
+                    <div class="flex justify-center flex-col border border-1 rounded-lg">
+                        <%= image_tag @course.thumbnail, class:"h-full w-full" %>
+                        <p class="text-2xl py-2"><%=@course.title%></p>
+                        <p class="font-bold"><%=@course.price %> &#8377;</p>
+                    </div>
+                    <div class="mt-1"><p class="font-bold">Course Descriptoin</p>
+                        <p class="text-xs w-full text-wrap"><%= @course.description%></p>
+                    </div>
+                     <div class="mt-1 full"><p class="font-bold">Course Content</p>
+                        <p class="text-[0.5rem]"><%=@course.course_content%></p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-[40%] border-l-2">
+                <div class="h-full flex flex-col justify-between  py-3 ">
+                    <div class="flex flex-col ">
+                        <p class="py-4 text-center">Chapter List</p>
+                        <% @course.chapters.each do |chapter|%>
+                            <p class="pl-3 bg-gray-100 my-1 mx-2 rounded-sm cursor-pointer ">
+                            <%= link_to instructor_chapter_path(chapter) do %>
+                                <%=chapter.title%></p>
+                            <%end%>
+                        <%end%>
+                    </div>
+                    <div class="text-center" >
+                        <p class="py-2 inline-block px-3 bg-blue-500 text-white rounded transition-all ease-in hover:scale-105"><%= link_to "Add New Chapter", new_instructor_course_chapter_path(@course)%></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+<%end%>

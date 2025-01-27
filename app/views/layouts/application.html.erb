@@ -14,7 +14,7 @@
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
     <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="/icon.png" type="image/png">
     <link rel="apple-touch-icon" href="/icon.png">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
@@ -28,7 +28,7 @@
     <main class="h-screen w-screen">
 
     <div class="h-[10%]"><%= render "components/header" %></div>
-    <div class="h-[90%]"><%= yield  %></div>
+    <div class="h-[90%] w-screen"><%= yield %></div>
     </main>
   </body>
 </html>
