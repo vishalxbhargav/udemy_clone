@@ -9,9 +9,24 @@
         <%end%>
         </span>
     </div>
-    <div class="w-[70%] flex justify-between">
+    <div class="w-[70%] flex justify-between items-center">
+        <!--
+        <div class="flex h-8 relative" data-controller="search" >
+        
+            <input type="text" data-search-target="query" id="search" placeholder="Search course.." class="focus:outline-0 border-b-2">
+            <div data-action="click->search#submit">
+                <%= image_tag "search.svg", class:"h-full hover:bg-gray-300 text-gray-300 p-1 hover:rounded-r-full cursor-pointer"%>
+            </div>
+            <div data-search-target="load" class="absolute top-15 right-0">
+                
+            </div>
+        </div>
+        -->
         <div>
-            search
+            <%= form_with url:"/search",method: :get do |form|%>
+                <%=form.text_field :query, placeholder:"Search course..",class:"focus:outline-0 border-b-2"%>
+                <%=form.submit 'search', class:"py-1 px-2 bg-blue-500 text-white rounded m-1"%>
+            <%end%>
         </div>
         <div>
             <% if user_signed_in? %>

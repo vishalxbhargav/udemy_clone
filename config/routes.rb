@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root "home#index"
+  get "/search",to:"home#search"
   get "/instructor",to:"instructor#index"
   get "/instructor/dashboard",to:"instructor#dashboard"
 
