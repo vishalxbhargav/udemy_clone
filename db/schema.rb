@@ -78,10 +78,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_27_085352) do
 
   create_table "comments", force: :cascade do |t|
     t.string "body"
-    t.bigint "answers_id"
+    t.bigint "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["answers_id"], name: "index_comments_on_answers_id"
+    t.index ["answer_id"], name: "index_comments_on_answer_id"
   end
 
   create_table "courses", force: :cascade do |t|

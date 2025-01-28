@@ -1,0 +1,36 @@
+<div class="h-screen w-screen ">
+    <div class="w-full border">
+        <div class="px-4 py-2 bg-gray-200">
+            <p class="text-[1.4rem] leading-2 border-b"><%=@question.title%></p>
+            <p><%=@question.description%></p>
+        </div>
+    </div>
+    <div>
+        <div class="w-full flex flex-col py-2">
+            <div class="px-4 flex items-center gap-4">
+                <%= link_to  new_question_answer_path(@question) do %>
+                    <p class="py-2 px-4 bg-blue-500 inline-block rounded-lg text-white cursor-pointer transition-all ease-out hover:scale-105">Write Answer</p>
+                <%end%>
+                <%= link_to 'Back', 'javascript:history.go(-1);', class:"h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded"%>
+            </div>
+            <div class="py-2">
+                <p>List of Answer</p>
+                <div class="px-2 py-4 flex flex-col gap-4 ">
+                    
+                    <%if @question&.answers&.any?%>
+                        <%@question&.answers.all.each do |answer|%>
+                        <div >
+                        </div>
+                        <%= link_to  answer_path(answer) do %>
+                            <div class=" border rounded-lg py-2 px-4 ">
+                                    <p class=""><%=answer.content%></p>
+                            </div>
+                        <%end%>
+                        <%end%>
+                    <%else%>
+                        <p>Don't have any quetions</p>
+                    <%end%>
+                </div>
+        </div>
+    </div>
+</div>

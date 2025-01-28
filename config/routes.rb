@@ -19,14 +19,12 @@ Rails.application.routes.draw do
     end
   end
   #forume routes
-
-  get "/forume/:id",to:"forumes#index"
- 
-
-  #answer routes for quetion
-  get "/forume/:course_id/question/:id", to: "questions#index"
-  get "/forume/:course_id/question/new", to:"question#show"
-  post "/forume/:course_id/question", to:"questions#create"
+  resources :forumes do
+    resources :questions,shallow: true
+  end
+  resources :questions do
+    resources :answers,shallow: true
+  end
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

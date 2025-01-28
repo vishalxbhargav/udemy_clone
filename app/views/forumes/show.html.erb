@@ -1,5 +1,9 @@
 <div class="h-screen w-screen ">
-    <div class="h-[10%] flex justify-center items-center  text-xl border-b"><%=@forume.course.title%></div>
+    <div class="h-[10%] flex justify-center items-center  text-xl border-b">
+        <div    >
+            <%=@forume.course.title%>
+        </div>
+    </div>
     <div class="w-full h-[90%] flex">
         <div class="w-[20%] h-full border-r">
             <div class="h-[90%] w-[90%] flex flex-col justify-between items-center py-4">
@@ -11,8 +15,9 @@
         </div>
         <div class="w-[80%] h-full overflow-auto">
             <div class="w-full h-[10%] px-4 ">
-                <div class="py-2">
+                <div class="py-2 flex items-center gap-4 ">
                 <p class="py-2 px-4 bg-blue-500 rounded-lg text-white inline-block" ><%= link_to "Write Question",new_forume_question_path(@forume) %></p>
+                <%= link_to 'Back', 'javascript:history.go(-1);', class:"h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded"%>
                 </div>
                <div class="pt-2">
                     <p clas="pt-2">List of questions</p>
@@ -21,8 +26,7 @@
                         </div>
                         <%if @forume.questions.any?%>
                             <%@forume.questions.all.each do |question|%>
-                            <%= link_to  forume_questions_path(@fourme) do %>
-                                
+                            <%= link_to  question_path(question) do %>
                                 <%= render "components/question",question: question %>
                             <%end%>
                             <%end%>

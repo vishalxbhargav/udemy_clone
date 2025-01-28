@@ -1,0 +1,14 @@
+<div class="h-full w-full flex jusity-center items-center">
+    <div class="h-[50%] w-[50%] ">
+        <%=form_with model:[:question,answer] do |form|%>
+            <div>
+                <p><%=form.label :content%></p>
+                <%=form.text_area :content, placeholder:"Enter your course description...", autocomplete: "description",class:"h-[8rem] w-[30rem] rounded focus:outline-0 border placeholder:text-sm pl-2"%>
+            </div >
+            <div class="flex items-center gap-4">
+                <%=form.submit "Creata Answer",class:" py-3 px-5 bg-blue-500 rounded-lg text-white transition-all cursor-pointer hover:scale-105 "%>
+                <%= link_to 'Back', 'javascript:history.go(-1);', class:"py-3 px-5 bg-blue-500 rounded-lg text-white hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded"%>
+            <div>
+        <%end%>
+    </div>
+</div>
