@@ -1,0 +1,12 @@
+<div class="h-[12rem] w-[17rem] bg-gray-800 border border-gray-200 rounded-lg text-white">
+    <div class="h-[60%] w-full rounded"><%= image_tag course.thumbnail,class:"w-full h-full object-fit rounded"%></div>
+    <div class="h-[40%] flex flex-col justify-between px-2 ">
+        <p class="text-sm"><%=course.title%></p>
+        <p class="text-sm"><%=course.price%></p>
+        <div class="w-full flex items-center py-1">
+            <p class="bg-white h-1 w-full"></p>
+            <p class="text-sm rounded-full bg-white text-black p-1"><%= course.chapters.count>0?(100/course.chapters.count)*(course.chapters.where(completed:true).count):0 %>%</p>
+        </div>
+    </div>
+    
+</div>
