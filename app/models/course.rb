@@ -12,4 +12,17 @@ class Course < ApplicationRecord
     validates :title, presence: true,length: {minimum:10}, on: :create
     validates :title, length: { minimum: 10 }, on: :update
     validates :price, presence: true, on: :create
+
+
+    def completion
+        total_chapter_count = self.chapters.count
+        completed_chapter_count = self.chapters.where(completed: true).count
+      
+        if total_chapter_count > 0
+          (100.0 / total_chapter_count) * completed_chapter_count
+        else
+          0
+        end
+    end
+      
 end

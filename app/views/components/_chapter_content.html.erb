@@ -1,11 +1,22 @@
-<div class="h-full w-full flex flex-col bg-blue-200">
-   <div class="h-[70%] w-full flex-col flex justify-center items-center bg-orange-200">
-        <div class="h-[80%] w-[80%] bg-white">
+<div class="h-full w-full flex flex-col ">
+   <div class="h-[70%] w-full flex-col flex justify-center items-center">
+        <div class="h-[80%] w-[80%] border border-gray-100 ">
           <%= video_tag chapter.video  ,class:"w-full h-full " %>
         </div>
-        <h1><%=chapter.title%></h1>
+        
    </div>
-   <div class="h-[30%] text-white w-full flex justify-center items-center bg-black ">
-        edit,delete
-   </div>
+     <div class="px-12 flex justify-between" data-controller="mark-as-complete">
+          <div>
+               <h1 class="text-2xl py-2"><%=chapter.title%></h1>
+               <p id="chapter_<%=chapter.id%>"  data-action="click->mark-as-complete#submit" class="py-2 px-2  text-white text-sm inline-block rounded-lg cursor-pointer <%= chapter.completed ? "bg-green-500" : "bg-black" %> "><%= chapter.completed ? "Completed" : "Mark as Complete" %></p>
+          </div>
+          <p data-mark-as-complete-target="load" class="display-none"></p>
+          <div>
+          <div class="flex flex-col">
+               <%chapter.docs.each do |doc|%>
+                    <a href="<%=url_for(doc)%>" target="_blank" class="text-blue-500 text-xl pr-8 underline">Notes</a>
+               <%end%>
+          </div>
+     </div>
+     </div>
 </div>

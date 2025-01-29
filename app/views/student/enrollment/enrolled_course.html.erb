@@ -1,21 +1,29 @@
-<div>
-     <div class="w-screen h-screen flex">
-        <div class="w-[20%] border-r-2 border-gray-200">
-           
-            <div class="h-full flex flex-col justify-between  py-3 ">
-                <div class="flex flex-col">
-                    <p class="py-4 text-center">Chapter List</p>
-                    <% @course.chapters.each do |chapter|%>
-                        <p class="pl-3 bg-gray-100 mx-2 rounded-sm cursor-pointer "><%=chapter.title%></p>
-                    <%end%>
+<div data-controller="chapter">
+     <div class="w-screen h-screen">
+       <div class="h-[10%] w-full border-b flex items-center">
+            <div class="w-full  flex justify-between items-center px-4">
+                <%= link_to root_path do %>
+                    <p>Home</p>
+                <%end%>
+                <div class="flex gap-6">
+                    <%= link_to 'Back', 'javascript:history.go(-1);', class:"py-1 px-3 bg-blue-500 text-white rounded-lg tex-sm cursor-pointer"%>
+                    <%=current_user.email%>
                 </div>
             </div>
-        </div>
-        <div class="h-screen w-[80%]"> 
-            <div class="h-[8%] w-[100%] border-b flex justify-evenly items-center">
-                <%= link_to 'Back', 'javascript:history.go(-1);', class:"h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded"%>
+       </div>
+       <div class="h-[90%] flex">
+            <div class="w-[20%] border-r">
+                <%@course.chapters.order(:created_at).each do |chapter|%>
+                    <p data-action="click->chapter#action" id="chapter_<%=chapter.id%>" class="cursor-pointer text-lg p-2 hover:bg-gray-400 "><%=chapter.title%></p>
+                <%end%>
             </div>
-            <%= render "components/chapter_content", chapter: @course.chapters[0] %>
-        </div>
+            <div class="w-[80%] h-full">
+                <div data-chapter-target="welcome" class="h-full w-full flex justify-center items-center">
+                    <p class="text-center text-lg">Wellcome to Course please Click chpater to start learning</p>
+                </div>
+                <div class="h-full w-full hidden" data-chapter-target="load">
+                </div>
+            </div>
+       </div>
     </div>
 </div>
