@@ -20,7 +20,12 @@ Rails.application.routes.draw do
     get "/get_chapter/:id",to:"chapters#get_chapter"
     get "/mark_as_complete/:id",to:"chapters#mark_as_complete"
   end
-  
+  namespace :payment do
+    get "/checkout/new/:id",to:"checkout#new", as: "checkout"
+    post "/checkout/create/:id",to:"checkout#create", as: "checkout_create"
+    get "/checkout/success/:id",to:"checkout#success", as: "successfull"
+    get "/checkout/cancel/:id",to:"checkout#cancel", as: "cancel"
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

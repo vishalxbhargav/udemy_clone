@@ -20,8 +20,11 @@
             <h3 class="font-bold py-2">Course Content</h3>
             <p class="mt-4"><%= @course.course_content%></p>
         </div>
-        <div class="w-full flex justify-ceneter items-center py-2">
-            <p ><%= button_to "Enroll",action: "enrolled",form_class:"w-full text-center mx-8 py-2 bg-blue-500 text-white rounded-lg transition-all ease-in cursor-pointer hover:scale-105"%></p>
+        <div class="w-full flex justify-ceneter items-center py-2 gap-4">
+            <%= link_to payment_checkout_path(@course) do%>
+                <p class="w-full text-center px-4 py-2 bg-blue-500 text-white rounded-lg transition-all ease-in cursor-pointer hover:scale-105">Enroll</p>
+            <%end%>
+
             <p><%= link_to 'Back', 'javascript:history.go(-1);', class:"h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded"%></p>
         </div>
     </div>
