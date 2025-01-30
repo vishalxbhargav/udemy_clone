@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   get "/search",to:"home#search"
   get "/instructor",to:"instructor#index"
   get "/instructor/dashboard",to:"instructor#dashboard"
+  get "/instructor/my_earning",to:"instructor#my_earning"
 
-  namespace :student do
+  namespace :student do 
+    get "/enrollment/course/:id", to:"enrollment#enrolled", as: "enrolled_in_course"
     get "/enrollment/:id", to:"enrollment#course"
-    post "/enrollment/:id", to:"enrollment#enrolled"
+   
     get "/my_learning", to:"enrollment#my_learning"
     get "/transaction_history",to: "enrollment#transaction_history"
     get "/dashboard",to: "enrollment#dashboard"
@@ -20,7 +22,13 @@ Rails.application.routes.draw do
     get "/get_chapter/:id",to:"chapters#get_chapter"
     get "/mark_as_complete/:id",to:"chapters#mark_as_complete"
   end
-  
+  namespace :payment do
+    get "/checkout/new/:id",to:"checkout#new", as: "checkout"
+    post "/checkout/create/:id",to:"checkout#create", as: "checkout_create"
+    get "/checkout/success/:id",to:"checkout#success", as: "successfull"
+    get "/checkout/cancel/:id",to:"checkout#cancel", as: "cancel"
+    resources :webhook,only: [:create]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buy cool new product</title>
+    <%= javascript_include_tag "https://js.stripe.com/v3/" %>
+  </head>
+  <body>
+    <section class="py-8">
+      <div class="container  w-[30%] mx-auto bg-gray-100 rounded-lg border">
+            <%= image_tag @course.thumbnail, class:"items-center mx-auto flex h-[8rem] w-full object-cover"%>
+            <div class="description">
+              <p class="text-sm"><%=@course.description%></p>
+              <p class="font-bold"><%=@course.price%></p>
+            </div>
+        
+            <div data-controller="payment" >
+                <p class="bg-blue-600 text-white text-center py-2 cursor-pointer rounded-b-lg" id="course_<%=@course.id%>" data-action="click->payment#submit" data-payment-target="btn">Checkout</p>
+            </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,1 +1,16 @@
-<div>transaction history</div>
+<div class="h-full w-full">
+    <h1 class="py-2">Transaction History</h1>
+    <div class="px-2 py-4">
+        <%@orders.each do |order|%>
+            <div class=" border-b w-full ">
+               <p>Course Name : <%=order.course.title%></p>
+               <p class="flex"> Transantion ID : <%=order.transaction_id%></p>
+               <div class="flex justify-between px-4">
+                    <p>Amount : <%=order.amount%>0</p>
+                    <p><%=order.created_at.day%>-<%=order.created_at.month%>-<%=order.created_at.year%></p>
+                </div>
+            </div>
+        <%end%>
+    </div>
+
+</div>

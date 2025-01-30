@@ -1,0 +1,2 @@
+module Payment::WebhookHelper
+end

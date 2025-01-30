@@ -20,6 +20,7 @@ class Student::EnrollmentController < ApplicationController
     end
 
     def transaction_history
+        @orders=current_user.orders
     end
 
     def dashboard
