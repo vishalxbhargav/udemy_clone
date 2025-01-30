@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :courses, class_name:"Course", foreign_key: "instructor_id"
   has_many :enrollments
   has_many :enrolled_courses, through: :enrollments,source: :course
+  has_many :orders
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

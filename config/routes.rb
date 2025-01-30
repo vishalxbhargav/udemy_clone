@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   get "/instructor",to:"instructor#index"
   get "/instructor/dashboard",to:"instructor#dashboard"
 
-  namespace :student do
+  namespace :student do 
+    get "/enrollment/course/:id", to:"enrollment#enrolled", as: "enrolled_in_course"
     get "/enrollment/:id", to:"enrollment#course"
-    post "/enrollment/:id", to:"enrollment#enrolled"
+   
     get "/my_learning", to:"enrollment#my_learning"
     get "/transaction_history",to: "enrollment#transaction_history"
     get "/dashboard",to: "enrollment#dashboard"
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
     post "/checkout/create/:id",to:"checkout#create", as: "checkout_create"
     get "/checkout/success/:id",to:"checkout#success", as: "successfull"
     get "/checkout/cancel/:id",to:"checkout#cancel", as: "cancel"
+    resources :webhook,only: [:create]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

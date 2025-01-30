@@ -12,8 +12,8 @@ export default class extends Controller {
       const courseId = clickedElement.id.replace("course_", "");
     
       const data=fetch(`/payment/checkout/create/${courseId}`,{method: "POST"}).then((response) => response.text())
-      .then((html) => {
-        window.location = html
+      .then((url) => {
+        window.location = url
       });
       console.log(data)
     } catch (error) {
