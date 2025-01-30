@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_30_111244) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_30_141937) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -115,6 +115,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_30_111244) do
     t.index ["course_id"], name: "index_forumes_on_course_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "message"
+    t.boolean "is_read", default: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
@@ -157,6 +166,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_30_111244) do
   add_foreign_key "courses", "categories"
   add_foreign_key "courses", "users", column: "instructor_id"
   add_foreign_key "forumes", "courses"
+  add_foreign_key "notifications", "users"
   add_foreign_key "orders", "courses"
   add_foreign_key "orders", "users"
 end
