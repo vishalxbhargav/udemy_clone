@@ -34,11 +34,10 @@ class Payment::WebhookController < ApplicationController
         when 'payment_intent.succeeded' 
             payment_intent = event.data.object # contains a Stripe::PaymentIntent
             puts "Payment for #{payment_intent['amount']} succeeded."
-            Order.create(course_id:event[:data][:object][:metadata][:course_id] ,user_id: event[:data][:object][:metadata][:user_id],transaction_id: event[:data][:object][:id],status:1)
+            amount=event[:data][:object][:amount]/100
+            Order.create(course_id:event[:data][:object][:metadata][:course_id] ,user_id: event[:data][:object][:metadata][:user_id],transaction_id: event[:data][:object][:id],status:1,amount: amount)
         when 'payment_method.attached'
-            payment_method = event.data.object # contains a Stripe::PaymentMethod
-            # Then define and call a method to handle the successful attachment of a PaymentMethod.
-            # handle_payment_method_attached(payment_method)
+            payment_method = event.data.object
         when 'checkout.session.completed'
         else
             puts "Unhandled event type: #{event.type}"

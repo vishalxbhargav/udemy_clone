@@ -12,6 +12,22 @@ class User < ApplicationRecord
   validates :email,presence: true, uniqueness: true, format: Devise.email_regexp,on: :create
   enum :role,[:User,:Instructor]
 
+  def total_earning
+    total_amount=0
+    self.courses.each do |course|
+      total_amount=total_amount+course.total_earning_by_course
+    end
+    return total_amount
+  end
+
+  def total_earning_for_last_month
+    total_amount=0
+    self.courses.each do |course|
+      total_amount=total_amount+course.last_month_earning_by_course
+    end
+    return total_amount
+  end
+
   def full_name
     self.first_name+" "+self.last_name
   end

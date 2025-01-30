@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/search",to:"home#search"
   get "/instructor",to:"instructor#index"
   get "/instructor/dashboard",to:"instructor#dashboard"
+  get "/instructor/my_earning",to:"instructor#my_earning"
 
   namespace :student do 
     get "/enrollment/course/:id", to:"enrollment#enrolled", as: "enrolled_in_course"

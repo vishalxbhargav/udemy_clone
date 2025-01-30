@@ -27,13 +27,7 @@
   <body>
     <main class="h-screen w-screen">
     <div>
-      <% if current_user.role!="Instructor"%>
-        <div class="h-screen w-screen text-lg font-bold flex justify-center items-center">
-          <p>Only Instructor can access this page</p>
-          <%= link_to "Go to Home", root_path %>
-        </div>
-      <%else%>
-          <div class="w-screen h-screen flex">
+      <div class="w-screen h-screen flex">
               <div class="w-[20%] border-r-2 flex flex-col justify-between  ">
                   <div class=" flex flex-col justify-between">
                     <div class=" flex  pb-[4rem] pt-[1rem]">
@@ -69,7 +63,6 @@
                   <%= yield %>
               </div>
           </div>
-      <%end%>
       </div>
     </main>
   </body>
