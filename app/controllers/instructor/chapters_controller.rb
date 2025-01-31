@@ -10,6 +10,7 @@ class Instructor::ChaptersController < ApplicationController
     def create
         @chapter=@course.chapters.new(chapter_params)
         if @chapter.save
+            SendChapterAddedNotificationJob.perform_later(@chapter)
             redirect_to instructor_course_path(@course)
         else
         end

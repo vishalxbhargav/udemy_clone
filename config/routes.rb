@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "/instructor/dashboard",to:"instructor#dashboard"
   get "/instructor/my_earning",to:"instructor#my_earning"
 
-  resources :notifications
+  resources :notifications,only:[:index]
   post "/notification/all_read",to:"notifications#all_read"
 
   namespace :student do 

@@ -9,6 +9,8 @@ class Student::EnrollmentController < ApplicationController
     def enrolled
         @enrollment=current_user.enrollments.new(course_id: @course.id)
         if @enrollment.save
+            mailer=CourseMailer.with(user: current_user).welcome_email
+            mailer.deliver_later
             redirect_to student_my_learning_path,notice: "successfully enrolled in course"
         else
             redirect_to student_path(@course),notice: @enrollment.errors[:user_id][0]

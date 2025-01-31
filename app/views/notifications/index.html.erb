@@ -1,7 +1,7 @@
 <% if current_user.unread_notification.count>0%>
-    <div class="container py-4 flex flex-col justify-center items-center gap-4">
+    <div data-controller="notifiction" class="container py-4 flex flex-col justify-center items-center gap-4">
         <div>
-            <p class="py-3 px-4 bg-blue-500 rounded-lg cursor-pointer transition-all ease-in hover:scale-105 text-white">Mark All Read</p>
+            <p data-action="click->notifiction#submit" class="py-3 px-4 bg-blue-500 rounded-lg cursor-pointer transition-all ease-in hover:scale-105 text-white">Mark All Read</p>
         </div>
         <table class="table-auto border rounded-lg ">
             <thead class="bg-gray-200">
