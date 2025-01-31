@@ -43,7 +43,7 @@
                         <%= link_to notifications_path do%>
                             <div class="relative cursor-pointer">
                                 <p class="h-5 px-4"><%= image_tag "bell.png", class:"h-full" %></p>
-                                <%if current_user.unread_notification.count>0 %>
+                                <%if current_user.unread_notification.count>0  %>
                                     <p class="absolute bottom-2 right-1 rounded-full bg-red-600 p-[5px] text-white text-[0.5rem] font-extrabold"><%=current_user.unread_notification.count%></p>
                                 <%end%>
                             </div>
