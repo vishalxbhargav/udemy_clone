@@ -1,0 +1,42 @@
+<%= form_with model:[:admin,user] do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name,placeholder:"Enter your First Name",autocomplete: "first_name",class:"h-8 rounded focus:outline-0 border placeholder:text-sm pl-2" %>
+  </div>
+
+  <div>
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name,placeholder:"Enter your Last Name",autocomplete: "last_name",class:"h-8 rounded focus:outline-0 border placeholder:text-sm pl-2" %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email,placeholder:"Enter your Email",autocomplete: "email",class:"h-8 rounded focus:outline-0 border placeholder:text-sm pl-2" %>
+  </div>
+
+  <div>
+    <%= form.label :username, style: "display: block" %>
+    <%= form.text_field :username,placeholder:"Enter your username",autocomplete: "username",class:"h-8 rounded focus:outline-0 border placeholder:text-sm pl-2" %>
+  </div>
+
+  <div>
+    <%= form.label :role, style: "display: block" %>
+    <%= form.select :role,["User","Instructor"] %>
+  </div>
+
+  <div class="flex justify-center items-center py-4">
+    <p class="py-2 px-3 bg-blue-500 rounded-sm text-white transition-all ease-in hover:scale-105 inline-block"><%= form.submit%></p>
+  </div>
+<% end %>

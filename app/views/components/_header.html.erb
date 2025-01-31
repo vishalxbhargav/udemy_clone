@@ -32,7 +32,12 @@
             <% if user_signed_in? %>
                 <div class="flex justify-between">
                     <div class="flex justify-between items-center px-3">
-                        <% if current_user.role=="Instructor"%>
+                        <% if current_user.Admin?%>
+                            <%= link_to  admin_home_index_path do %>
+                                <p class="px-2 py-1 rounded-lg transition-all hover:bg-black hover:rounded-lg hover:text-white cursor-pointer">Admin Section</p>
+                            <%end%>
+                        <%end%>
+                        <% if current_user.Instructor? || current_user.Admin?%>
                             <%= link_to  instructor_path do %>
                                 <p class="px-2 py-1 rounded-lg transition-all hover:bg-black hover:rounded-lg hover:text-white cursor-pointer">Instructor</p>
                             <%end%>

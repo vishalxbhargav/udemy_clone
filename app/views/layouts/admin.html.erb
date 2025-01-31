@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Udemy Clone" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <main class="h-screen w-screen">
+        <div class="h-[8%] w-[100%] flex justify-between items-center px-8 border-b">
+            <div clas="w-[30%]">
+                <%= link_to admin_home_index_path do %>
+                    <div class="text-2xl font-bold">Admin Panel</div>
+                <%end%>
+            </div>
+            <div class="w-[70%] flex justify-between">
+                <%= link_to admin_users_path do %>
+                    <p class="cursor-pointer hover:bg-red-400 hover:rounded-md hover:text-white px-2 py-1 transition-all ease-out hover:scale-105">Users</p>
+                <%end%>
+                <p class="cursor-pointer hover:bg-red-400 hover:rounded-md hover:text-white px-2 py-1 transition-all ease-out hover:scale-105">Courses</p>
+                <p class="cursor-pointer hover:bg-red-400 hover:rounded-md hover:text-white px-2 py-1 transition-all ease-out hover:scale-105">Transactions</p>
+            </div>
+        </div>
+        <div class="h-[92%] bg-blue-200 w-full">
+            <%= yield%>
+        </div>
+        </div>
+    </main>
+  </body>
+</html>

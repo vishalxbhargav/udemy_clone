@@ -1,0 +1,12 @@
+<div class="h-full w-full flex flex-col justify-center items-center bg-white">
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @user %>
+
+  <div>
+    <div class="flex gap-4">
+      <%= link_to "Show this user", admin_user_path(@user),class:"py-2 px-3 bg-gray-500 rounded-sm text-white transition-all ease-in hover:scale-105" %> 
+      <%= link_to "Back to users", admin_users_path,class:"py-2 px-3 bg-gray-500 rounded-sm text-white transition-all ease-in hover:scale-105" %>
+    </div>
+  </div>
+</div>

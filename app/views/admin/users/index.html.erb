@@ -1,0 +1,93 @@
+<div class="pt-2  mx-auto w-[90%] bg-blue-200">
+    <div class="relative flex flex-col w-full h-full overflow-x-scroll text-gray-700 bg-white shadow-md rounded-lg bg-clip-border">
+    <table class="w-full text-left table-auto min-w-max text-slate-800">
+        <thead>
+        <tr class="text-slate-500 border-b border-slate-300 bg-slate-50 overflow-auto">
+            <th class="p-2">
+            <p class="text-sm leading-none font-normal">
+                S NO.
+            </p>
+            </th>
+            <th class="p-2">
+            <p class="text-sm leading-none font-normal">
+                First Name
+            </p>
+            </th>
+            <th class="p-2">
+            <p class="text-sm leading-none font-normal">
+                Last Name
+            </p>
+            </th>
+            <th class="p-2">
+            <p class="text-sm leading-none font-normal">
+               Email
+            </p>
+            </th>
+            <th class="p-2">
+            <p class="text-sm leading-none font-normal">
+                Username
+            </p>
+            </th>
+            <th class="p-2">
+            <p class="text-sm leading-none font-normal">
+                Role
+            </p>
+            </th>
+            <th class="p-2">
+            <p></p>
+            </th>
+             <th class="p-2">
+            <p></p>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <%@users.each_with_index do |user,index|%>
+            <tr class="hover:bg-slate-50">
+                <td class="p-2">
+                <p class="text-sm font-bold">
+                <%=index+1%>
+                </p>
+                </td>
+                <td class="p-2">
+                <p class="text-sm">
+                    <%=user.first_name%>
+                </p>
+                </td>
+                <td class="p-2">
+                <p class="text-sm">
+                    <%=user.last_name%>
+                </p>
+                </td>
+                <td class="p-2">
+                <p class="text-sm">
+                    <%=user.email%>
+                </p>
+                </td>
+                <td class="p-2">
+                <p class="text-sm">
+                    <%=user.username%>
+                </p>
+                </td>
+                <td class="p-2">
+                <a href="#" class="text-sm font-semibold ">
+                    <%=user.role%>
+                </a>
+                </td>
+                <td class="p-2">
+                <%= link_to "Edit" ,edit_admin_user_path(user),class:"text-sm font-semibold text-blue-500" %>
+                </td>
+                <td class="p-2">
+                <a href="#" class="text-sm font-semibold text-red-400">
+                   delete
+                </a>
+                </td>
+            </tr>
+        <%end%>
+        </tbody>
+    </table>
+    <div>
+        pagination
+    </div>
+</div>
+<div>
