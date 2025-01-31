@@ -16,7 +16,6 @@ class Instructor::ChaptersController < ApplicationController
     end
 
     def update
-        debugger
         if @chapter.update(chapter_params)
             redirect_to instructor_course_path(@chapter),notice:"Course updated successfully"
         else
