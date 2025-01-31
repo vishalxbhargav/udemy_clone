@@ -37,4 +37,5 @@
 !/app/assets/builds/.keep
 public/icon.svg
 public/icon.svg
+config/initializers/smtp_mail.rb
 stripe

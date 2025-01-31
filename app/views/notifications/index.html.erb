@@ -1,0 +1,32 @@
+<% if current_user.unread_notification.count>0%>
+    <div  class="container py-4 flex flex-col justify-center items-center gap-4">
+        <div>
+            <%= button_to notification_all_read_path do %>
+                <p class="py-3 px-4 bg-blue-500 rounded-lg cursor-pointer transition-all ease-in hover:scale-105 text-white">Mark All Read</p>
+            <%end%>
+        </div>
+        <table class="table-auto border rounded-lg ">
+            <thead class="bg-gray-200">
+                <tr>
+                <th class="border-r px-4">S NO.</th>
+                <th class="border-r px-4">Message</th>
+                <th class="border-r px-4">Mark as Read</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%@notifications.each_with_index do |notification,index|%>
+                    <tr class="py-2 border-b px-4 ">
+                        <td class="border-r px-4"><%=index+1%></td>
+                        <td class="border-r px-4"><%=notification.message%></td>
+                    
+                        <td class="border-r px-4 cursor-pointer"><%= notification.is_read ? "Read" : "Unread"%></td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </table>
+    </div>
+<%else%>
+    <div class="container py-4 flex flex-col justify-center items-center gap-4">
+        <p>Don't have any Unread notification</p>
+    </div>
+<%end%>
