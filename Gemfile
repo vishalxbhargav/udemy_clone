@@ -67,3 +67,7 @@ gem "tailwindcss-rails", "~> 3.3"
 gem 'stripe'
 
 gem 'rack-cors'
+
+gem 'motor-admin'
+
+gem "cancan"
