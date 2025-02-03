@@ -1,4 +1,4 @@
-<% if current_user.role!="Instructor"%>
+<% unless current_user.Instructor? || current_user.Admin? %>
     <div class="h-screen w-screen text-lg font-bold flex justify-center items-center">Only Instructor can access this page</div>
 <%else%>
     <div class="w-full h-full flex flex-col justify content">

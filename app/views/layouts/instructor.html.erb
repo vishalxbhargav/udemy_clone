@@ -27,7 +27,7 @@
   <body>
     <main class="h-screen w-screen">
     <div>
-      <% if current_user.role!="Instructor"%>
+      <% unless current_user.Instructor? || current_user.Admin?%>
         <div class="h-screen w-screen text-lg font-bold flex justify-center items-center">
           <p>Only Instructor can access this page</p>
           <%= link_to "Go to Home", root_path %>
