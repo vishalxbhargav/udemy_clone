@@ -39,3 +39,4 @@ public/icon.svg
 public/icon.svg
 config/initializers/smtp_mail.rb
 stripe
+db/migrate/20250203071807_install_motor_admin.rb

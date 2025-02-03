@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name,presence: true, on: :create
   validates :username, presence: true, on: :create
   validates :email,presence: true, uniqueness: true, format: Devise.email_regexp,on: :create
-  enum :role,[:User,:Instructor]
+  enum :role,[:User,:Instructor,:Admin]
 
   def total_earning
     total_amount=0
