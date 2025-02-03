@@ -1,0 +1,18 @@
+<div class=" border rounded-lg py-2 px-4 ">   
+    <div class="flex py-2 justify-between items-center px-4 border-b">
+        <div class="flex items-center gap-4">
+            <div class="h-5 w-5 px-4 py-4 bg-gray-200 rounded-full"></div>
+            <p><%=answer.user.username%></p>
+        </div>
+        <p><%=answer.created_at.strftime('%d/%m/%Y')%></p>
+    </div>
+    <p class="border-b py-2"><%=answer.body%></p>
+    <div class="flex justify-evenly items-center items-center py-4">
+        <p class="hover:text-white hover:bg-gray-400 px-4 py-2 transition-all ease-in  hover:rounded-lg cursor-pointer">show Comments</p>
+        <p class="hover:text-white hover:bg-gray-400 px-4 py-2 transition-all ease-in  hover:rounded-lg cursor-pointer">Write Comments</p>
+        <%if current_user&.id==answer.user.id%>
+            <p class="hover:text-white hover:bg-gray-400 px-4 py-2 transition-all ease-in  hover:rounded-lg cursor-pointer">Update Answer</p>
+            <p class="hover:text-white hover:bg-gray-400 px-4 py-2 transition-all ease-in  hover:rounded-lg cursor-pointer">delete Answer</p>
+        <%end%>
+    </div>
+</div>

@@ -1,0 +1,2 @@
+module Forume::FourumesHelper
+end

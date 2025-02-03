@@ -10,6 +10,15 @@ Rails.application.routes.draw do
   resources :notifications,only:[:index]
   post "/notification/all_read",to:"notifications#all_read"
 
+  namespace :forume do
+    #forume routes
+    resources :forumes,only:[:show] do
+      resources :questions,shallow: true
+    end
+    resources :questions,only:[:show] do
+      resources :answers,shallow: true
+    end
+  end
   namespace :student do 
     get "/enrollment/course/:id", to:"enrollment#enrolled", as: "enrolled_in_course"
     get "/enrollment/:id", to:"enrollment#course"

@@ -1,0 +1,34 @@
+<div class="h-full flex flex-col " data-controller="question">
+  <div class="w-[80%] container mx-auto">
+    <div class="w-[60%] container mx-auto">
+      <form class=" mx-auto">
+        <div class="mb-3">
+          <label for="title">Title</label>
+          <br>
+          <input type="text" data-question-target="title" id="title" class="h-8 focus:outline-0 border w-full rounded" placeholder="Enter Title" />
+        </div>
+        <div class="mb-3">
+          <label for="comment">Description:</label>
+          <br>
+          <textarea id="comment" data-question-target="description" placeholder="Write your answer" class="focus:outline-0 border w-full rounded" rows="4"></textarea>
+          <br>
+        </div>
+        <button data-action="click->question#submit" id="forume_<%= @forume.id %>" class="bg-blue-500 py-2 px-4 rounded-lg text-white transition-all ease-in hover:scale-105">
+        Write A Question
+      </button>
+      </form>
+    </div>
+  </div>
+  <div class="w-[80%] container mx-auto pt-4 ">
+    <div class="flex flex-col gap-4">
+      <div data-question-target="result"></div>
+      <% if @forume.questions.any? %>
+        <% @forume.questions.each do |question| %>
+          <%= render "components/question", question: question %>
+        <% end %>
+      <% else %>
+        <p>No questions yet</p>
+      <% end %>
+    </div>
+  </div>
+</div>
