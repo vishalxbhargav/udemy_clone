@@ -14,6 +14,7 @@ class Course < ApplicationRecord
     validates :title, presence: true,length: {minimum:10}, on: :create
     validates :title, length: { minimum: 10 }, on: :update
     validates :price, presence: true, on: :create
+    validates :thumbnail, content_type: ['image/png', 'image/jpeg']
 
 
     scope :last_month, -> {where('created_at >= ?',1.month.ago.beginning_of_month).where('created_at <= ?',1.month.ago.end_of_month)}
@@ -34,15 +35,13 @@ class Course < ApplicationRecord
       return total_amout
     end
 
-    def completion
-        total_chapter_count = self.chapters.count
-        completed_chapter_count = self.chapters.where(completed: true).count
-      
-        if total_chapter_count > 0
-          (100.0 / total_chapter_count) * completed_chapter_count
-        else
-          0
-        end
+    def completion(user)
+      chapter_count=self.chapters.count
+      if chapter_count > 0
+        enrollment=Enrollment.where(course_id: self.id,user_id:user.id)[0]
+        return result=(100/self.chapters.count)* enrollment.get_completed_chapter
+      end
+      0
     end
       
 end

@@ -71,3 +71,5 @@ gem 'rack-cors'
 gem 'motor-admin'
 
 gem "cancan"
+
+gem 'active_storage_validations'

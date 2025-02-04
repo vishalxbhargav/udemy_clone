@@ -13,6 +13,7 @@ class Instructor::ChaptersController < ApplicationController
             SendChapterAddedNotificationJob.perform_later(@chapter)
             redirect_to instructor_course_path(@course)
         else
+            redirect_to new_instructor_course_chapter_path,notice:@chapter.errors
         end
     end
 
@@ -27,15 +28,7 @@ class Instructor::ChaptersController < ApplicationController
     def show
         @chapter
     end
-    def mark_as_complete
-        @chapter = Chapter.find_by(id: params[:id])
-        @chapter.completed=!@chapter.completed
-        if @chapter.save
-            render plain: "Status Change", status: :ok
-        else 
-            render plain: "Chapter not found", status: :not_found
-        end
-    end
+
     def get_chapter
         @chapter = Chapter.find_by(id: params[:id])
         

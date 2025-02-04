@@ -10,7 +10,7 @@ export default class extends Controller {
     const clickedElement = e.currentTarget;
     const chapterId = clickedElement.id.replace("chapter_", "");
     console.log(chapterId)
-    fetch(`/instructor/mark_as_complete/${chapterId}`)
+    fetch(`/instructor/mark_as_complete/${chapterId}`,{method: "post"})
     .then((response) => response.text())
       .then((html) => {
         this.loadTarget.innerHTML = html;
