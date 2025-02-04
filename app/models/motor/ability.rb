@@ -12,6 +12,14 @@ module Motor
                     can :update, Course,exept: [:active]
                     can :read, Chapter
                     can :update, Chapter
+                    can :read, Forume,{course:{user:{id:user.id}}}
+                    can :update, Forume,{course:{user:{id:user.id}}}
+                    can :read, Question
+                    can :update, Question
+                    can :read, Answer
+                    can :update, Answer
+                    can :read, Comment
+                    can :update, Comment
                 else 
                     return
                 end
