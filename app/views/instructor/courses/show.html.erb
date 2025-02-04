@@ -4,6 +4,7 @@
     <div class="w-full h-full flex flex-col justify content">
         <div class="h-[8%] w-[100%] border-b flex justify-evenly items-center">
             <p class="h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded"><%= link_to "Edit", edit_instructor_course_path(@course) %></p>
+             <p class="h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded"><%= link_to "Forume", forume_forume_path(@course.forume) %></p>
             <%= link_to 'Delete', instructor_course_path(@course), data: { turbo_method: :delete },class:"h-8 flex justify-center text-white items-center px-5 hover:bg-gray-300 cursor-pointer inline-block bg-gray-800 rounded" %>
         </div>
         <div class="h-[92%] flex ">

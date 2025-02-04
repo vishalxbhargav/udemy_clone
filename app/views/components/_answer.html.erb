@@ -1,0 +1,26 @@
+<div class=" border rounded-lg pt-4 px-4 " data-controller="comment">   
+    <div class="flex py-2 justify-between items-center px-4 border-b">
+        <div class="flex items-center gap-4">
+            <div class="h-5 w-5 px-4 py-4 bg-gray-200 rounded-full"></div>
+            <p><%=answer.user.username%></p>
+        </div>
+        <p><%=answer.created_at.strftime('%d/%m/%Y')%></p>
+    </div>
+    <p class="border-b py-2"><%=answer.body%></p>
+    <div class="flex justify-evenly items-center items-center py-1 text-sm">
+        <%= link_to forume_answer_path(answer) do%>
+            <p class="hover:text-white hover:bg-gray-400 px-4 py-2 transition-all ease-in  hover:rounded-lg cursor-pointer" data-action="click->comment#showComments">show Comments</p>
+        <%end%>
+        <%= link_to forume_answer_path(answer) do%>
+            <p class="hover:text-white hover:bg-gray-400 px-4 py-2 transition-all ease-in  hover:rounded-lg cursor-pointer" data-action="click->comment#writeComment">Write Comments</p>
+        <%end%>
+        <%if current_user&.id==answer.user.id%>
+            <%= link_to edit_forume_answer_path(answer) do%>
+                <p class="hover:text-white hover:bg-gray-400 px-4 py-2 transition-all ease-in  hover:rounded-lg cursor-pointer">Update Answer</p>
+            <%end%>
+            <p class="hover:text-white hover:bg-gray-400 px-4 py-2 transition-all ease-in  hover:rounded-lg cursor-pointer"><%= link_to 'Delete Answer', [:forume,answer],
+  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %></p>
+            
+        <%end%>
+    </div>
+</div>

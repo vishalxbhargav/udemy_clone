@@ -29,6 +29,7 @@ class Instructor::CoursesController < ApplicationController
     def create
         @course=current_user.courses.build(course_params)
         if @course.save
+            Forume.create(course_id:@course.id)
             redirect_to instructor_path,notice:"Course created successfully"
         else
             redirect_to new_instructor_course_path(@course)

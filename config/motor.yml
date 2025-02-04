@@ -1,0 +1,42 @@
+---
+engine_version: 0.4.34
+file_version: 2025-02-03 09:54:59.007098000 Z
+resources: []
+configs:
+- key: header.links
+  value:
+  - name: "⭐ Star on GitHub"
+    path: https://github.com/motor-admin/motor-admin-rails
+  updated_at: 2025-02-03 07:25:35.042251000 +00:00
+queries:
+- id: 1
+  name: 'Total Amount '
+  sql_body: select sum(amount) from orders;
+  description: 
+  preferences:
+    query_type: sql
+    database: primary
+    visualization: table
+    visualization_options: {}
+    variables: []
+    api_config_name: origin
+  tags: []
+  updated_at: 2025-02-03 09:54:59.007098000 +00:00
+dashboards:
+- id: 1
+  title: Transaction History
+  description: 
+  preferences:
+    layout: []
+    variables: []
+  tags: []
+  updated_at: 2025-02-03 09:51:27.466011000 +00:00
+forms: []
+alerts: []
+api_configs:
+- id: 1
+  name: origin
+  url: "/"
+  preferences: {}
+  description: 
+  updated_at: 2025-02-03 07:25:35.084610000 +00:00

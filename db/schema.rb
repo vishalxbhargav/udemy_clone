@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_03_092229) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_03_101420) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -53,11 +53,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_03_092229) do
   end
 
   create_table "answers", force: :cascade do |t|
-    t.string "content"
-    t.bigint "question_id"
+    t.string "body"
+    t.bigint "user_id", null: false
+    t.bigint "question_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -79,10 +81,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_03_092229) do
 
   create_table "comments", force: :cascade do |t|
     t.string "body"
-    t.bigint "answer_id"
+    t.bigint "answer_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_comments_on_answer_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -332,10 +336,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_03_092229) do
   create_table "questions", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.bigint "forume_id"
+    t.bigint "user_id", null: false
+    t.bigint "forume_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["forume_id"], name: "index_questions_on_forume_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -363,6 +369,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_03_092229) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "answers", "questions"
+  add_foreign_key "answers", "users"
+  add_foreign_key "comments", "answers"
+  add_foreign_key "comments", "users"
   add_foreign_key "courses", "categories"
   add_foreign_key "courses", "users", column: "instructor_id"
   add_foreign_key "forumes", "courses"
@@ -374,5 +384,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_03_092229) do
   add_foreign_key "notifications", "users"
   add_foreign_key "orders", "courses"
   add_foreign_key "orders", "users"
+  add_foreign_key "questions", "forumes"
+  add_foreign_key "questions", "users"
   add_foreign_key "verifycations", "courses"
 end

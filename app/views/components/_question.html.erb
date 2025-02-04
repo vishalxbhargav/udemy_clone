@@ -1,0 +1,21 @@
+<%= link_to forume_question_path(question) do %>
+    <div class=" border rounded-lg py-2 px-4 ">
+            <p class="text-[1.5rem] border-b border-t"><%=question.title%></p>
+            <p><%=question.description%></p>
+            <div class="flex pt-2  justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <div class="h-3 w-3 px-2 py-2 bg-gray-200 rounded-full"></div>
+                    <p class="text-sm"><%=question.user.username%></p>
+                </div>
+                <p class="text-sm"><%=question.created_at.strftime('%d/%m/%Y')%></p>
+            </div>
+            <%if current_user&.id==question.user.id%>
+                <div class="flex gap-8 items-center px-4 pt-2 border-t">
+                    <%= link_to edit_forume_question_path(question) do%>
+                        <p class="hover:text-white hover:bg-gray-400 px-4 py-2 transition-all ease-in  hover:rounded-lg cursor-pointer text-sm">Update Answer</p>
+                    <%end%>
+                    <p class="hover:text-white hover:bg-gray-400 px-4 py-2 transition-all ease-in  hover:rounded-lg cursor-pointer text-sm"><%= link_to 'Delete Answer', [:forume,question],data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %></p>
+                </div>
+            <%end%>  
+    </div>
+<%end%>
