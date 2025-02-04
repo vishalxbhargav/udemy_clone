@@ -34,15 +34,13 @@ class Course < ApplicationRecord
       return total_amout
     end
 
-    def completion
-        total_chapter_count = self.chapters.count
-        completed_chapter_count = self.chapters.where(completed: true).count
-      
-        if total_chapter_count > 0
-          (100.0 / total_chapter_count) * completed_chapter_count
-        else
-          0
-        end
+    def completion(user)
+      chapter_count=self.chapters.count
+      if chapter_count > 0
+        enrollment=Enrollment.where(course_id: self.id,user_id:user.id)[0]
+        return result=(100/self.chapters.count)* enrollment.get_completed_chapter
+      end
+      0
     end
       
 end

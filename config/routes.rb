@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       resources :chapters, shallow: true
     end
     get "/get_chapter/:id",to:"chapters#get_chapter"
-    get "/mark_as_complete/:id",to:"chapters#mark_as_complete"
+    post "/mark_as_complete/:chapter_id",to:"progress#mark_as_complete"
   end
   namespace :payment do
     get "/checkout/new/:id",to:"checkout#new", as: "checkout"

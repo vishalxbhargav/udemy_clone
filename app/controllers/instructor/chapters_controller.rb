@@ -27,15 +27,7 @@ class Instructor::ChaptersController < ApplicationController
     def show
         @chapter
     end
-    def mark_as_complete
-        @chapter = Chapter.find_by(id: params[:id])
-        @chapter.completed=!@chapter.completed
-        if @chapter.save
-            render plain: "Status Change", status: :ok
-        else 
-            render plain: "Chapter not found", status: :not_found
-        end
-    end
+
     def get_chapter
         @chapter = Chapter.find_by(id: params[:id])
         

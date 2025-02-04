@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_03_101420) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_04_102641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -333,6 +333,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_03_101420) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "progres", force: :cascade do |t|
+    t.bigint "enrollment_id", null: false
+    t.bigint "chapter_id", null: false
+    t.boolean "completed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chapter_id"], name: "index_progres_on_chapter_id"
+    t.index ["enrollment_id"], name: "index_progres_on_enrollment_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -384,6 +394,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_03_101420) do
   add_foreign_key "notifications", "users"
   add_foreign_key "orders", "courses"
   add_foreign_key "orders", "users"
+  add_foreign_key "progres", "chapters"
+  add_foreign_key "progres", "enrollments"
   add_foreign_key "questions", "forumes"
   add_foreign_key "questions", "users"
   add_foreign_key "verifycations", "courses"

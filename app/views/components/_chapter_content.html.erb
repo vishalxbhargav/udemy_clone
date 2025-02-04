@@ -8,7 +8,7 @@
      <div class="px-12 flex justify-between" data-controller="mark-as-complete">
           <div>
                <h1 class="text-2xl py-2"><%=chapter.title%></h1>
-               <p id="chapter_<%=chapter.id%>"  data-action="click->mark-as-complete#submit" class="py-2 px-2  text-white text-sm inline-block rounded-lg cursor-pointer <%= chapter.completed ? "bg-green-500" : "bg-black" %> "><%= chapter.completed ? "Completed" : "Mark as Complete" %></p>
+               <p id="chapter_<%=chapter.id%>"  data-action="click->mark-as-complete#submit" class="py-2 px-2  text-white text-sm inline-block rounded-lg cursor-pointer <%= chapter.get_progres(current_user).completed ? "bg-green-500" : "bg-black" %> "><%= chapter.get_progres(current_user).completed ? "Completed" : "Mark as Complete" %></p>
           </div>
           <p data-mark-as-complete-target="load" class="display-none"></p>
           <div>
