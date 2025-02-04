@@ -6,6 +6,9 @@
                     <p>Home</p>
                 <%end%>
                 <div class="flex gap-6">
+                    <%= link_to  forume_forume_path(@course.forume) do %>
+                        <p class="py-1 px-3 bg-blue-500 text-white rounded-lg tex-sm cursor-pointer">Forume</p>
+                    <%end%>
                     <%= link_to 'Back', 'javascript:history.go(-1);', class:"py-1 px-3 bg-blue-500 text-white rounded-lg tex-sm cursor-pointer"%>
                     <%=current_user.email%>
                 </div>

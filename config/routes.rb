@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :questions,only:[:show] do
       resources :answers,shallow: true
     end
+    resources :answer,only:[:show] do
+      resources :comments,shallow: true
+    end
   end
   namespace :student do 
     get "/enrollment/course/:id", to:"enrollment#enrolled", as: "enrolled_in_course"

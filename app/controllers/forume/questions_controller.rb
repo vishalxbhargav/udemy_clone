@@ -1,11 +1,24 @@
 class Forume::QuestionsController < ApplicationController
     layout "forume"
-    before_action :set_question,only:[:show]
+    before_action :set_question,only:[:show,:edit,:update,:destroy]
     skip_before_action :verify_authenticity_token
     before_action :authenticate_user!
 
     def show
         @question
+    end
+
+    def edit
+        @question
+    end
+
+    def update
+        debugger
+        if @question.update(question_params)
+            redirect_to forume_forume_path(@question.forume)
+        else
+            redirect_to forume_forume_path(@question.forume),notice:@question.errors
+        end
     end
 
     def create
@@ -16,6 +29,14 @@ class Forume::QuestionsController < ApplicationController
             render partial: "components/question", locals:{question: @question}
         else
             render plain: "Error founded", status: :not_found
+        end
+    end
+
+    def destroy
+        if @question.destroy
+            redirect_to forume_forume_path(@question.forume),notice:"Question Successfully deleted"
+        else
+            redirect_to forume_forume_path(@question.forume),notice:@question.errors
         end
     end
 
