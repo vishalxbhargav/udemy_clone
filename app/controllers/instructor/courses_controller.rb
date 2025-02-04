@@ -32,7 +32,7 @@ class Instructor::CoursesController < ApplicationController
             Forume.create(course_id:@course.id)
             redirect_to instructor_path,notice:"Course created successfully"
         else
-            redirect_to new_instructor_course_path(@course)
+            redirect_to new_instructor_course_path(@course),notice: @course.errors
         end
     end
     

@@ -14,6 +14,7 @@ class Course < ApplicationRecord
     validates :title, presence: true,length: {minimum:10}, on: :create
     validates :title, length: { minimum: 10 }, on: :update
     validates :price, presence: true, on: :create
+    validates :thumbnail, content_type: ['image/png', 'image/jpeg']
 
 
     scope :last_month, -> {where('created_at >= ?',1.month.ago.beginning_of_month).where('created_at <= ?',1.month.ago.end_of_month)}

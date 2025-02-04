@@ -13,6 +13,7 @@ class Instructor::ChaptersController < ApplicationController
             SendChapterAddedNotificationJob.perform_later(@chapter)
             redirect_to instructor_course_path(@course)
         else
+            redirect_to new_instructor_course_chapter_path,notice:@chapter.errors
         end
     end
 
