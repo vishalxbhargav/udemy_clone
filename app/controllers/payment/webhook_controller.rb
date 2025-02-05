@@ -1,5 +1,6 @@
 class Payment::WebhookController < ApplicationController
     skip_before_action :verify_authenticity_token
+    before_action :authenticate_user!
 
     def create
         endpoint_secret="whsec_f7d8ca71e95b1901b796a8117bd042c297510e241981cd94e4cb98d8c81b4b8a"
