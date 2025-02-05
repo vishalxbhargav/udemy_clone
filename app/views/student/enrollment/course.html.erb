@@ -13,6 +13,9 @@
         </div>
         <h2 class="text-2xl font-bold py-3"><%= @course.title %></h2>
         <div>
+            <h3 class="font-bold py-2">Course Price :  <p class="mt-4"><%= @course.price%> &#8377;</p></h3>
+        </div>
+        <div>
             <h3 class="font-bold py-2">Course description</h3>
             <p class="mt-4"><%= @course.description%></p>
         </div>
@@ -21,7 +24,7 @@
             <p class="mt-4"><%= @course.course_content%></p>
         </div>
         <div class="w-full flex justify-ceneter items-center py-2 gap-4">
-            <% if Enrollment.exists?([course_id:@course.id,user_id: current_user.id])%>
+            <% if Enrollment.exists?([course_id:@course.id,user_id: current_user&.id])%>
                 <%= link_to "/student/enrolled_course/#{ @course.id}" do %>
                     <p class="w-full text-center px-4 py-2 bg-blue-500 text-white rounded-lg transition-all ease-in cursor-pointer hover:scale-105">Got Course</p>
                 <%end%>
@@ -40,7 +43,7 @@
         <div class="h-full flex flex-col justify-between  py-3 ">
             <div class="flex flex-col ">
                 <p class="py-4 text-center">Chapter List</p>
-                <% @course.chapters.each do |chapter|%>
+                <% @course.chapters.order(:created_at).each do |chapter|%>
                     <p class="pl-3 bg-gray-100 my-1 mx-2 rounded-sm cursor-pointer ">
                         <%=chapter.title%></p>
                 <%end%>

@@ -36,9 +36,13 @@ class Payment::WebhookController < ApplicationController
             puts "Payment for #{payment_intent['amount']} succeeded."
             amount=event[:data][:object][:amount]/100
             Order.create(course_id:event[:data][:object][:metadata][:course_id] ,user_id: event[:data][:object][:metadata][:user_id],transaction_id: event[:data][:object][:id],status:1,amount: amount)
+        when "payment_intent.payment_failed"
+            amount=event[:data][:object][:amount]/100
+            Order.create(course_id:event[:data][:object][:metadata][:course_id] ,user_id: event[:data][:object][:metadata][:user_id],transaction_id: event[:data][:object][:id],amount: amount)
         when 'payment_method.attached'
             payment_method = event.data.object
         when 'checkout.session.completed'
+            debugger
         else
             puts "Unhandled event type: #{event.type}"
         end

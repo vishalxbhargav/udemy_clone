@@ -1,5 +1,6 @@
 class Payment::CheckoutController < ApplicationController
     skip_before_action :verify_authenticity_token,only: [:create]
+    before_action :authenticate_user!
     before_action :set_course
     def new
         @course

@@ -1,0 +1,16 @@
+<div class="h-full w-full" data-controller="search">
+   <div class="h-[40%] w-[80%] container mx-auto  relative">
+        <div class="h-full w-full flex justify-center items-center">
+            <div class="h-full w-[60%] container mx-auto">
+                <div class="py-8 flex items-center">
+                    <input type="text" data-search-target="query" placeholder="search courses.."  class="h-8 w-full rounded-l-lg focus:outline-0 border-b">
+                     <div data-action="click->search#submit" class="h-8">
+                        <%= image_tag "search.svg", class:"h-full hover:bg-gray-300 text-gray-300 p-1 hover:rounded-r-full cursor-pointer"%>
+                    </div>
+                </div>
+                <div data-search-target="load" class="h-full w-full pt-2">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

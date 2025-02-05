@@ -73,3 +73,4 @@ gem 'motor-admin'
 gem "cancan"
 
 gem 'active_storage_validations'
+gem 'activerecord-like'
