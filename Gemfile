@@ -74,3 +74,4 @@ gem "cancan"
 
 gem 'active_storage_validations'
 gem 'activerecord-like'
+gem 'pagy'

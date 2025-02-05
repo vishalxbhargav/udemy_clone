@@ -1,21 +1,21 @@
-<div data-controller="search">
-    <div data-search-target="load"></div>
-</div>
-<div class="w-full h-full ">
-    <div class="w-full py-2">
-        <div class="flex justify-evenly overflow-hidden">
-            <%Category.all.each do |category|%>
-                <div class="px-1">
-                    <p class="px-2 bg-gray-100 rounded-lg cursor-pointer text-gray-800 whitespace-nowrap hover:bg-gray-800 hover:text-white "><%= category.name%></p>
-                </div>
+<div class="w-full h-full relative flex flex-col justify-between">
+    <div>
+        <div class="w-full py-2">
+            <div class="flex justify-evenly overflow-hidden">
+                <%Category.all.each do |category|%>
+                    <div class="px-1">
+                        <p class="px-2 bg-gray-100 rounded-lg cursor-pointer text-gray-800 whitespace-nowrap hover:bg-gray-800 hover:text-white "><%= category.name%></p>
+                    </div>
+                <%end%>
+            </div>
+        </div>
+        <div class="px-5 pt-5 flex flex-wrap gap-5">
+            <%@courses.each do |course|%>
+                <%= link_to student_path(course) do %>
+                    <%= render "components/course",course: course %>
+                <%end%>
             <%end%>
         </div>
     </div>
-    <div class="px-5 pt-5 flex flex-wrap gap-5">
-        <%Course.all.each do |course|%>
-            <%= link_to student_path(course) do %>
-                <%= render "components/course",course: course %>
-            <%end%>
-        <%end%>
-    </div>
+    <div class="flex justify-center items-center h-8"><%== pagy_nav(@pagy) %></div>
 </div>

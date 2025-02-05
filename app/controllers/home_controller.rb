@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
     include HomeHelper
     def index
+        @pagy, @courses = pagy(Course.all, items:5)
     end
     
     def search
