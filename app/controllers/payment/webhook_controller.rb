@@ -1,6 +1,5 @@
 class Payment::WebhookController < ApplicationController
     skip_before_action :verify_authenticity_token
-    before_action :authenticate_user!
 
     def create
         endpoint_secret="whsec_f7d8ca71e95b1901b796a8117bd042c297510e241981cd94e4cb98d8c81b4b8a"
@@ -37,9 +36,13 @@ class Payment::WebhookController < ApplicationController
             puts "Payment for #{payment_intent['amount']} succeeded."
             amount=event[:data][:object][:amount]/100
             Order.create(course_id:event[:data][:object][:metadata][:course_id] ,user_id: event[:data][:object][:metadata][:user_id],transaction_id: event[:data][:object][:id],status:1,amount: amount)
+        when "payment_intent.payment_failed"
+            amount=event[:data][:object][:amount]/100
+            Order.create(course_id:event[:data][:object][:metadata][:course_id] ,user_id: event[:data][:object][:metadata][:user_id],transaction_id: event[:data][:object][:id],amount: amount)
         when 'payment_method.attached'
             payment_method = event.data.object
         when 'checkout.session.completed'
+            debugger
         else
             puts "Unhandled event type: #{event.type}"
         end
