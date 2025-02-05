@@ -1,15 +1,14 @@
 class HomeController < ApplicationController
+    include HomeHelper
     def index
     end
     
     def search
         @courses=search_result
+        render partial: "components/search_result", locals:{courses: @courses}
     end
 
-    private 
-
-    def search_result
-        title=Course.arel_table[:title]
-        @courses=Course.where(title.matches("%#{params[:query]}%"))
+    def search_page
     end
+
 end

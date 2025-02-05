@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "home#index"
   get "/search",to:"home#search"
+  get "/search/page",to:"home#search_page",as: "search_page"
   get "/instructor",to:"instructor#index"
   get "/instructor/dashboard",to:"instructor#dashboard"
   get "/instructor/my_earning",to:"instructor#my_earning"
