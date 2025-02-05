@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  mount Motor::Admin => '/motor_admin'
+  authenticated :user do
+    mount Motor::Admin => '/motor_admin'
+  end
   devise_for :users
   root "home#index"
   get "/search",to:"home#search"
