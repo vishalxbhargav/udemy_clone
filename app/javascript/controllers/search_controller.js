@@ -1,6 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="search"
 export default class extends Controller {
   static targets = [ "query" ,"load"]
   connect() {
@@ -13,5 +12,6 @@ export default class extends Controller {
     .then((html) => {
       this.loadTarget.innerHTML = html;
     })
+    e.currentTarget.value=""
   }
 }
