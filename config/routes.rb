@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :courses do
       resources :chapters, shallow: true
     end
+    get "/course/verification/:course_id",to:"verifications#verification",as: "course_verification"
     get "/get_chapter/:id",to:"chapters#get_chapter"
     post "/mark_as_complete/:chapter_id",to:"progress#mark_as_complete"
   end

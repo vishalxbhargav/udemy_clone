@@ -1,19 +1,21 @@
 <div class="px-2 w-full h-full ">
-    All Courses
-   <div>Active Course</div>
-    <div class="w-full px-3 flex flex-wrap py-2 gap-[1rem]">
-        <%current_user.courses.where(active:true).each do |course|%> 
-            <%= link_to instructor_course_path(course) do %>
-                <%= render "components/course",course: course %>
+    <p class="py-2 text-2xl">All Courses</p>
+    <div class="px-4">
+        <div>Active Course</div>
+        <div class="w-full px-3 flex flex-wrap py-2 gap-[1rem]">
+            <%current_user.courses.where(active:true).each do |course|%> 
+                <%= link_to instructor_course_path(course) do %>
+                    <%= render "components/course",course: course %>
+                <%end%>
             <%end%>
-        <%end%>
-    </div>
-    <div>Pending for varification Course</div>
-    <div class="w-full px-3 flex flex-wrap py-2 gap-[1rem]">
-        <%current_user.courses.where(active:false).each do |course|%> 
-            <%= link_to instructor_course_path(course) do %>
-                <%= render "components/course",course: course %>
+        </div>
+        <div>Pending for varification Course</div>
+        <div class="w-full px-3 flex flex-wrap py-2 gap-[1rem]">
+            <%current_user.courses.where(active:false).each do |course|%> 
+                <%= link_to instructor_course_path(course) do %>
+                    <%= render "components/course",course: course %>
+                <%end%>
             <%end%>
-        <%end%>
+        </div>
     </div>
 </div>
