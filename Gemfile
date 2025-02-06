@@ -70,7 +70,7 @@ gem 'rack-cors'
 
 gem 'motor-admin'
 
-gem "cancan"
+gem "cancancan"
 
 gem 'active_storage_validations'
 gem 'activerecord-like'

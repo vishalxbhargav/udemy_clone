@@ -1,6 +1,7 @@
 class Instructor::CoursesController < ApplicationController
     before_action :set_course, only: [ :show, :edit, :update, :destroy]
     before_action :authenticate_user!
+    load_and_authorize_resource
     layout "instructor"
     def index
 
@@ -16,9 +17,11 @@ class Instructor::CoursesController < ApplicationController
     
     def edit
         @course
+        @abc = "something"
     end
 
     def update
+        abc
         if @course.update(course_params)
             redirect_to instructor_path,notice:"Course updated successfully"
         else
