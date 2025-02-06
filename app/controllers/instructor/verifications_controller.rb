@@ -4,7 +4,7 @@ class Instructor::VerificationsController < ApplicationController
 
     def verification
         debugger
-        @verification=verification.new(course_id: @course.id)
+        @verification=Verifycation.new(course_id: @course.id)
         if @verification.save
             redirect_to instructor_course_path(@course),notice: "successfully send for verification"
         else
