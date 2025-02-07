@@ -75,3 +75,7 @@ gem "cancancan"
 gem 'active_storage_validations'
 gem 'activerecord-like'
 gem 'pagy'
+
+gem 'omniauth-google-oauth2'
+gem 'dotenv-rails', groups: [:development, :test]
+gem "omniauth-rails_csrf_protection"

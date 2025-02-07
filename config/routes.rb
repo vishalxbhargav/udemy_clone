@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   authenticated :user do
     mount Motor::Admin => '/motor_admin'
   end
-  devise_for :users
+  devise_for :users,controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root "home#index"
   get "/search",to:"home#search"
   get "/search/page",to:"home#search_page",as: "search_page"
