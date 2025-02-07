@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import notifyChannel from "../channels/notify_channel";
+import notifyChannel from "channels/notify_channel";
 
 export default class extends Controller {
   connect() {
