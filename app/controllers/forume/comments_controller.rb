@@ -8,6 +8,7 @@ class Forume::CommentsController < ApplicationController
         @comment=@answer.comments.new(comment_params)
         @comment.user_id=current_user.id
         if @comment.save
+            AnswerNotificationJob.perform_later(@comment)
             redirect_to forume_answer_path(@answer),notice:"Comment successfully created"
         else
             redirect_to forume_answer_path(@answer),notice:@comment.errors

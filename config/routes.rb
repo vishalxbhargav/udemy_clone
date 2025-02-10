@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   authenticated :user do
     mount Motor::Admin => '/motor_admin'
   end
-  devise_for :users
+  mount ActionCable.server => '/cable'
+  devise_for :users,controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root "home#index"
   get "/search",to:"home#search"
   get "/search/page",to:"home#search_page",as: "search_page"
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
 
   namespace :forume do
     #forume routes
+    resources :forumes,only:[:index]
     resources :forumes,only:[:show] do
       resources :questions,shallow: true
     end
@@ -38,6 +40,7 @@ Rails.application.routes.draw do
     resources :courses do
       resources :chapters, shallow: true
     end
+    get "/course/verification/:course_id",to:"verifications#verification",as: "course_verification"
     get "/get_chapter/:id",to:"chapters#get_chapter"
     post "/mark_as_complete/:chapter_id",to:"progress#mark_as_complete"
   end

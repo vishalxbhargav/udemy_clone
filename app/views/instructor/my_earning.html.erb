@@ -1,4 +1,13 @@
 <div class="h-full w-full ">
+    <div class="py-4 w-full border-b flex items-center">
+        <div class="w-full  flex justify-between items-center px-4">
+            <div></div>
+            <div class="flex gap-6">
+                <%= link_to 'Back', 'javascript:history.go(-1);', class:"py-1 px-3 bg-blue-500 text-white rounded-lg tex-sm cursor-pointer"%>
+                <%=current_user.email%>
+            </div>
+        </div>
+    </div>
     <div class="flex gap-4 flex-wrap p-4">
         <div class="inline-block p-4 bg-blue-200 rounded-sm  border">
             <p class="font-semibold">Total Earning</p>

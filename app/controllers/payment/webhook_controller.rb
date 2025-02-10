@@ -42,7 +42,6 @@ class Payment::WebhookController < ApplicationController
         when 'payment_method.attached'
             payment_method = event.data.object
         when 'checkout.session.completed'
-            debugger
         else
             puts "Unhandled event type: #{event.type}"
         end

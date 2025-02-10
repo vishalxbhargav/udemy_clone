@@ -1,4 +1,5 @@
 class Instructor::ChaptersController < ApplicationController
+    load_and_authorize_resource
     layout "instructor"
     before_action :authenticate_user!
     before_action :set_course, only: [ :new, :create,:destroy ]
@@ -61,8 +62,15 @@ class Instructor::ChaptersController < ApplicationController
         render file: "#{Rails.root}/public/chapter404.html" if @chapter.nil?
     end
 
+    def check_instructor(course)
+        if course.user!=current_user
+            render plain: "unauthorized access"
+        end
+    end
+
     def set_course
         @course=Course.find_by(id: params[:course_id])
+        check_instructor(@course)
         render file: "#{Rails.root}/public/course404.html" if @course.nil?
     end
 end
