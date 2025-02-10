@@ -8,10 +8,9 @@ const notifyChannel = consumer.subscriptions.create("NotifyChannel", {
   disconnected() {
     console.log("Disconnected from NotifyChannel");
   },
-
   received(data) {
-    console.log("Received data:", data); 
-  },
+    document.getElementById('notification').innerText=data
+    console.log("Notification Received:", data);
+  }
 });
-
 export default notifyChannel;

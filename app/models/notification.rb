@@ -1,5 +1,6 @@
 class Notification < ApplicationRecord
-  after_commit :broadcast_notification, on: :create
+  after_create_commit { broadcast_notification }
+  after_update_commit { broadcast_notification }
   belongs_to :user
 
   def mark_as_read
@@ -9,8 +10,10 @@ class Notification < ApplicationRecord
 
   private
 
-  def broadcast_notification
-    ActionCable.server.broadcast("notify_channel", self)
+  def broadcast_notification()
+    user=self.user
+    count=user.unread_notification.count
+    NotifyChannel.broadcast_to(user,count)
   end
 
 end

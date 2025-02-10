@@ -217,5 +217,10 @@
 
 
 # When you are done setting your own default freeze it, so it will not get changed accidentally
+# config/initializers/pagy.rb
+
+require "pagy"
+# require "pagy/extras/tailwind"
+  # If using Tailwind
 
 Pagy::DEFAULT[:limit]  = 5
