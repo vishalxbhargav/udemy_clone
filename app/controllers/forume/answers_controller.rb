@@ -17,6 +17,7 @@ class Forume::AnswersController < ApplicationController
         @answer.user_id=current_user.id
         @answer.question_id=params[:question_id]
         if @answer.save
+            QuestionNotificationJob.perform_later(@answer)
             render partial: "components/answer", locals:{answer: @answer}
         else
             render plain: "Error founded", status: :not_found
