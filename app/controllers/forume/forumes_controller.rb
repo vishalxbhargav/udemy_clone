@@ -1,7 +1,13 @@
 class Forume::ForumesController < ApplicationController
     layout "forume"
+    layout "student",only:[:index]
     before_action :authenticate_user!
-    before_action :set_forume
+    before_action :set_forume,only:[:show]
+    include ForumeList
+
+    def index
+        student_forume
+    end 
 
     def show
         @forume

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :forume do
     #forume routes
+    resources :forumes,only:[:index]
     resources :forumes,only:[:show] do
       resources :questions,shallow: true
     end
