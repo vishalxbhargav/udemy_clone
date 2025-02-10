@@ -17,6 +17,7 @@ class Ability
               can :create, Chapter
               can :read, Forume,{course:{user:{id:user.id}}}
               can :update, Forume,{course:{user:{id:user.id}}}
+              can :manage, Verifycation
           else 
               return
           end
