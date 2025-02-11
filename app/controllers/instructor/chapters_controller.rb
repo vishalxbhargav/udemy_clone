@@ -1,5 +1,5 @@
 class Instructor::ChaptersController < ApplicationController
-    load_and_authorize_resource except: :get_course
+    load_and_authorize_resource only: :create
     layout "instructor"
     before_action :authenticate_user!
     before_action :set_course, only: [ :new, :create,:destroy ]
