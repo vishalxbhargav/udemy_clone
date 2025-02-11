@@ -13,7 +13,6 @@ class Forume::QuestionsController < ApplicationController
     end
 
     def update
-        debugger
         if @question.update(question_params)
             redirect_to forume_forume_path(@question.forume)
         else
