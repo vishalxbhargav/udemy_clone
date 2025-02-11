@@ -84,6 +84,7 @@ test:
 #
 production:
   primary: &primary_production
+     adapter: postgresql
     database: <%=ENV["PRODUCTION_DATABASE_NAME"]%>
     username: <%=ENV["PRODUCTION_DATABASE_USER"]%>
     password: <%= ENV["PRODUCTION_DATABASE_PASSWORD"] %>
