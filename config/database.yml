@@ -84,10 +84,10 @@ test:
 #
 production:
   primary: &primary_production
-    <<: *default
-    database: udemy_clone_production
-    username: udemy_clone
-    password: <%= ENV["UDEMY_CLONE_DATABASE_PASSWORD"] %>
+    database: <%=ENV["PRODUCTION_DATABASE_NAME"]%>
+    username: <%=ENV["PRODUCTION_DATABASE_USER"]%>
+    password: <%= ENV["PRODUCTION_DATABASE_PASSWORD"] %>
+    host: <%=ENV["PRODUCTION_DATABASE_HOST"]%>
   cache:
     <<: *primary_production
     database: udemy_clone_production_cache
