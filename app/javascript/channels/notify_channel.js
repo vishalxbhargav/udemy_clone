@@ -10,7 +10,6 @@ const notifyChannel = consumer.subscriptions.create("NotifyChannel", {
   },
   received(data) {
     document.getElementById('notification').innerText=data
-    console.log("Notification Received:", data);
   }
 });
 export default notifyChannel;
