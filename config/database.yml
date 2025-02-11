@@ -14,9 +14,9 @@
 #
 default: &default
   adapter: postgresql
-  username:  <%= ENV['DATABASE_USERNAME'] %> 
-  password: <%= ENV["DATABASE_PASSWORD"] %>
-  host: <%= ENV["DATABASE_HOST"] %>
+  username: postgres
+  password: admin123
+  host: localhost
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
@@ -84,10 +84,10 @@ test:
 #
 production:
   primary: &primary_production
-    database: <%=ENV["PRODUCTION_DATABASE_NAME"]%>
-    username: <%=ENV["PRODUCTION_DATABASE_USER"]%>
-    password: <%= ENV["PRODUCTION_DATABASE_PASSWORD"] %>
-    host: <%=ENV["PRODUCTION_DATABASE_HOST"]%>
+    <<: *default
+    database: udemy_clone_production
+    username: udemy_clone
+    password: <%= ENV["UDEMY_CLONE_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: udemy_clone_production_cache
