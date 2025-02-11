@@ -2,7 +2,7 @@ class Payment::WebhookController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def create
-        endpoint_secret="whsec_f7d8ca71e95b1901b796a8117bd042c297510e241981cd94e4cb98d8c81b4b8a"
+        endpoint_secret=ENV['stripe_endpoint_secret']
         payload = request.body.read
         event = nil
 

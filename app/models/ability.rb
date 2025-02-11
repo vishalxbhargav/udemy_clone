@@ -12,13 +12,16 @@ class Ability
               can :create, Course
               can :read, Course,{ user:{ id: user.id } }
               can :update, Course,{ user:{ id: user.id } }
-              can :read, Chapter,{course:{ user:{ id: user.id } }}
+              can :read, Chapter
               can :update, Chapter,{course:{ user:{ id: user.id } }}
               can :create, Chapter
               can :read, Forume,{course:{user:{id:user.id}}}
               can :update, Forume,{course:{user:{id:user.id}}}
               can :manage, Verifycation
           else 
+              can :read,Course
+              can :read,Chapter
+              can :read,Transaction
               return
           end
       else
