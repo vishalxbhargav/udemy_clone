@@ -5,6 +5,11 @@ RSpec.describe User, type: :model do
       it{ should have_many(:courses)}
       it{ should have_many(:enrollments)}
       it{ should have_many(:enrolled_courses).through(:enrollments)}
+      it{ should have_many(:orders)}
+      it{ should have_many(:notifications)}
+      it{ should have_many(:questions)}
+      it{ should have_many(:answers)}
+      it{ should have_many(:comments)}
     end
     describe 'validations' do
 
@@ -13,6 +18,7 @@ RSpec.describe User, type: :model do
       it { should validate_presence_of(:first_name)}
       it { should validate_presence_of(:username) }
       it { should validate_presence_of(:last_name)}
+      it { should define_enum_for(:role).with_values([:User,:Instructor,:Admin])}
 
       it "full name when data valid" do
         user=FactoryBot.build(:user)
@@ -22,6 +28,12 @@ RSpec.describe User, type: :model do
       it "full name when data valid" do
         user=FactoryBot.build(:user)
         expect(user.full_name).not_to eq(user.first_name+" v "+user.last_name)
+      end
+    end
+
+    describe 'methodes' do
+      it "total_earning" do
+        
       end
     end
 end
