@@ -32,8 +32,18 @@ RSpec.describe User, type: :model do
     end
 
     describe 'methodes' do
+      subject{FactoryBot.build(:user)}
       it "total_earning" do
-        
+        p subject.courses
       end
+
+      it "total_earning_for_last_month" do
+        p subject.courses
+      end
+
+      it "unread_notification" do
+        p subject.notifications
+      end
+
     end
 end
