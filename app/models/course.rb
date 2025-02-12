@@ -8,6 +8,7 @@ class Course < ApplicationRecord
     has_many :enrolled_users, through: :enrollments,source: :user
     has_many :orders
     has_one :forume
+    has_one :verifycation
 
     validates :thumbnail,presence: true, on: :create
     validates :category_id, presence: true, on: :create

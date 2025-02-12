@@ -11,6 +11,7 @@ RSpec.describe Course, type: :model do
     it { is_expected.to have_one_attached(:thumbnail) }
     it { should have_many(:orders)}
     it { should have_one(:forume)}
+    it { should have_one(:verifycation)}
 
   end
   describe 'validations' do

@@ -3,6 +3,8 @@ class Notification < ApplicationRecord
   after_update_commit { broadcast_notification }
   belongs_to :user
 
+  validates :message, presence: true
+
   def mark_as_read
     self.is_read=true
     self.save
