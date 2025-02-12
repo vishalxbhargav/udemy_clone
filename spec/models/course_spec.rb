@@ -33,7 +33,7 @@ RSpec.describe Course, type: :model do
   describe 'scopes' do
 
     let(:user) { FactoryBot.create(:user) }
-    let(:category) {FactoryBot.create(:category)}
+    let(:category) {create(:category)}
 
     it "last month created course" do
 

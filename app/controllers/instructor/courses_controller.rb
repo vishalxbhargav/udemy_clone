@@ -17,7 +17,6 @@ class Instructor::CoursesController < ApplicationController
     
     def edit
         @course
-        @abc = "something"
     end
 
     def update
