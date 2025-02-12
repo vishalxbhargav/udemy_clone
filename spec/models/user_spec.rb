@@ -32,9 +32,9 @@ RSpec.describe User, type: :model do
     end
 
     describe 'methodes' do
-      subject{FactoryBot.build(:user)}
+      subject{FactoryBot.create(:user)}
       it "total_earning" do
-        p subject.courses
+        
       end
 
       it "total_earning_for_last_month" do
@@ -42,7 +42,16 @@ RSpec.describe User, type: :model do
       end
 
       it "unread_notification" do
-        p subject.notifications
+        notification1=subject.notifications.create(message:"tesing",user_id:subject.id)
+        notification2=subject.notifications.create(message:"tesing",user_id:subject.id)
+        expect(subject.unread_notification).to eq([notification1,notification2])
+      end
+
+      it "unread_notification when some of them read" do
+        notification1=subject.notifications.create(message:"tesing",user_id:subject.id)
+        notification2=subject.notifications.create(message:"tesing",user_id:subject.id)
+        notification1.update(is_read:true)
+        expect(subject.unread_notification).to eq([notification2])
       end
 
     end

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :course do
-    title { "MyString" }
-    description { "MyString" }
-    price { "9.99" }
+    title { "I thought DatabaseCleaner would revert the changes, but it looks like the user record persist in the database till the second scenario block." }
+    description { "I thought DatabaseCleaner would revert the changes, but it looks like the user record persist in the database till the second scenario block." }
+    price { 9999 }
   end
 end
