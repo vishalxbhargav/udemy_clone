@@ -20,11 +20,10 @@ class Instructor::CoursesController < ApplicationController
     end
 
     def update
-        abc
         if @course.update(course_params)
             redirect_to instructor_path,notice:"Course updated successfully"
         else
-            redirect_to new_instructor_course_path(@course),notice: @course.errors
+            redirect_to edit_instructor_course(@course),notice: @course.errors
         end
     end
 
@@ -50,7 +49,7 @@ class Instructor::CoursesController < ApplicationController
     
     def set_course
         @course=Course.find_by(id: params[:id])
-        render file: "#{Rails.root}/public/course404.html" if @course.nil?
+        render file: "#{Rails.root}/public/course404.html",status:404 if @course.nil?
     end
 
     def course_params
