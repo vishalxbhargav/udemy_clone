@@ -15,7 +15,6 @@ RSpec.describe "Home", type: :request do
     let!(:chapter){course.chapters.create(title:"introduction for course",video:File.open("#{Rails.root}/public/sample.mp4"),docs:[File.open("#{Rails.root}/public/notes.pdf")])}
     it "search course" do
         get "/search", params:{query:"vishal"}
-        debugger
         expect(response.status).to eq(200)
     end
   end

@@ -276,23 +276,27 @@ RSpec.describe "Instructor::Courses", type: :request do
     end
   end
 
-  describe "PUT /destroy" do
-    let(:course){
-      Course.create!(
-        title:"testing tile for this course now on",
-        description:"testing tile for this course now on",
-        instructor_id:user.id,
-        category_id:category.id,
-        price:4444,
-        thumbnail:image
-      )
-    }
-    describe "when user is instructor" do
+  # describe "DELETE /destroy" do
+  #   let!(:course){
+  #     Course.create!(
+  #       title:"testing tile for this course now on",
+  #       description:"testing tile for this course now on",
+  #       instructor_id:user.id,
+  #       category_id:category.id,
+  #       price:4444,
+  #       thumbnail:image
+  #     )
+  #   }
+  #   describe "when user is instructor" do
+  #     it "contains chapter" do
+  #       delete "/instructor/courses/#{course.id}", as: :json
+  #       debugger
+  #       expect(response).to redirect_to instructor_path
+  #     end
+  #   end
 
-    end
-
-    describe "when user is not instructor" do
+  #   describe "when user is not instructor" do
       
-    end
-  end
+  #   end
+  # end
 end

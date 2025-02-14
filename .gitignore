@@ -42,3 +42,6 @@ public/notes.pdf
 config/initializers/smtp_mail.rb
 stripe
 db/migrate/20250203071807_install_motor_admin.rb
+spec/fixtures/files/test.mp4
+spec/fixtures/files/test.pdf
+spec/fixtures/files/test.jpg

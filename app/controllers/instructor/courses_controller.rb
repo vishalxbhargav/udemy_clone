@@ -41,7 +41,7 @@ class Instructor::CoursesController < ApplicationController
         if @course.destroy
             redirect_to instructor_path,notice:"Course deleted successfully" 
         else
-            redirect_to new_instructor_course_path(@course),notice: @course.errors
+            redirect_to instructor_path(@course),notice: @course.errors
         end
     end
 

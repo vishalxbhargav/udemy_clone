@@ -12,6 +12,7 @@ class Ability
               can :create, Course
               can :read, Course,{ user:{ id: user.id } }
               can :update, Course,{ user:{ id: user.id } }
+              can :delete, Course,{ user:{ id: user.id } }
               can :read, Chapter,{course:{ user:{ id: user.id } }}
               can :update, Chapter,{course:{ user:{ id: user.id } }}
               can :create, Chapter

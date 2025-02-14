@@ -1,5 +1,5 @@
 class Instructor::ChaptersController < ApplicationController
-    load_and_authorize_resource only: :create
+    load_and_authorize_resource only: [:create,:show,:edit,:update,:destroy]
     layout "instructor"
     before_action :authenticate_user!
     before_action :set_course, only: [ :new, :create,:destroy ]
@@ -22,7 +22,7 @@ class Instructor::ChaptersController < ApplicationController
         if @chapter.update(chapter_params)
             redirect_to instructor_course_path(@chapter),notice:"Course updated successfully"
         else
-            redirect_to edit_instructor_chapter_path(@course),notice: @course.errors
+            redirect_to edit_instructor_chapter_path(@chapter),notice: @chapter.errors
         end
     end
 
@@ -44,6 +44,7 @@ class Instructor::ChaptersController < ApplicationController
     end
 
     def destroy
+        debugger
         if @chapter.destroy
             redirect_to instructor_course_path(@course),notice:"Chapter deleted successfully" 
         else
@@ -59,18 +60,28 @@ class Instructor::ChaptersController < ApplicationController
 
     def set_chapter
         @chapter=Chapter.find_by(id: params[:id])
+        if @chapter.nil?
+            render file: "#{Rails.root}/public/course404.html",status:404 
+        else
+            check_instructor(@chapter.course)
+        end
         render file: "#{Rails.root}/public/chapter404.html" if @chapter.nil?
     end
 
     def check_instructor(course)
-        if course.user!=current_user
-            render plain: "unauthorized access"
+        if course&.user!=current_user
+            render plain: "unauthorized access",status:401
         end
     end
 
     def set_course
+        debugger
         @course=Course.find_by(id: params[:course_id])
-        check_instructor(@course)
-        render file: "#{Rails.root}/public/course404.html" if @course.nil?
+        
+        if @course.nil?
+            render file: "#{Rails.root}/public/course404.html",status:404 
+        else
+            check_instructor(@course)
+        end
     end
 end
