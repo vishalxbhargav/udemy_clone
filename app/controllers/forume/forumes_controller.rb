@@ -1,4 +1,5 @@
 class Forume::ForumesController < ApplicationController
+    load_and_authorize_resource
     layout "forume"
     layout "student",only:[:index]
     before_action :authenticate_user!

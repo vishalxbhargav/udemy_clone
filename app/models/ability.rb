@@ -16,12 +16,19 @@ class Ability
               can :read, Chapter,{course:{ user:{ id: user.id } }}
               can :update, Chapter,{course:{ user:{ id: user.id } }}
               can :create, Chapter
+              can :create, Forume,{course:{user:{id:user.id}}}
               can :read, Forume,{course:{user:{id:user.id}}}
               can :update, Forume,{course:{user:{id:user.id}}}
               can :manage, Verifycation
           else 
               can :read,Progre,{Enrollment:{user:{id:user.id}}}
               can :update,Progre,{Enrollment:{user:{id:user.id}}}
+              can :read,Forume do |forume|
+                user.enrolled_courses&.any?forume.course
+              end
+              can [:read,:create,:update],Question do |question|
+                user.enrolled_courses&.any?question.forume.course
+              end
           end
       else
         return

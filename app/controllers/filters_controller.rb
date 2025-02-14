@@ -8,7 +8,7 @@ class FiltersController < ApplicationController
     
     def set_category
         @category=Category.find_by(id: params[:id])
-        render file: "#{Rails.root}/public/404.html" if @category.nil?
+        render file: "#{Rails.root}/public/404.html",layout: false if @category.nil?
     end
 
 end
