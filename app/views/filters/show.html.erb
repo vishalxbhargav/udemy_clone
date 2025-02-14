@@ -8,21 +8,24 @@
                     <%Category.all.each do |category|%>
                         <%= link_to filter_path category do %>
                             <div class="px-1">
-                                <p class="px-2 bg-gray-100 rounded-lg cursor-pointer text-gray-800 whitespace-nowrap hover:bg-gray-800 hover:text-white "><%= category.name%></p>
+                                <p class="px-2 bg-gray-100 rounded-lg cursor-pointer text-gray-800 whitespace-nowrap hover:bg-gray-800 hover:text-white <%="bg-gray-800 text-white"  if @category&.id == category.id %>"><%= category.name%></p>
                             </div>
                         <%end%>
                     <%end%>
-                    
                 <%end%>
                 </div>
             <p class="absolute right-0 text-2xl cursor-pointer">></p>
             </div>
         </div>
         <div class="px-5 pt-5 flex flex-wrap gap-5">
-            <%@courses.each do |course|%>
-                <%= link_to student_path(course) do %>
-                    <%= render "components/course",course: course %>
+            <%unless @courses&.empty? %>
+                <%@courses.each do |course|%>
+                    <%= link_to student_path(course) do %>
+                        <%= render "components/course",course: course %>
+                    <%end%>
                 <%end%>
+            <%else%>
+                <p class="text-center w-full h-full">Don't Have any coure yet</p>
             <%end%>
         </div>
     </div>

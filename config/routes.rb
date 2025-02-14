@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   devise_for :users,controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root "home#index"
+  resources :filters,only:[:show]
   get "/search",to:"home#search"
   get "/search/page",to:"home#search_page",as: "search_page"
   get "/instructor",to:"instructor#index"
