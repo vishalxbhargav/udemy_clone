@@ -1,13 +1,10 @@
-<div class="flex flex-col items-center">   
+<div class="w-full flex flex-col items-center">   
     <h1>Search result : <%=courses.count%></h1>
-    <div class="container mx-auto px-4">
+    <div class="container w-[90%] mx-auto px-4 flex flex-wrap gap-4">
         <%if courses.any?%>
             <%courses.each do |course|%>
                 <%= link_to student_path(course) do %>
-                    <div class="border-b">
-                        <p class="py-2 px-4 "><%=course.title%></p>
-                        <p class="py-2 px-4 "><%=course.price%></p>
-                    </div>
+                    <%= render "components/course",course: course %>
                 <%end%>
             <%end%>
         <%else%>
