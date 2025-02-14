@@ -20,7 +20,8 @@ class Ability
               can :update, Forume,{course:{user:{id:user.id}}}
               can :manage, Verifycation
           else 
-              return
+              can :read,Progre,{Enrollment:{user:{id:user.id}}}
+              can :update,Progre,{Enrollment:{user:{id:user.id}}}
           end
       else
         return
