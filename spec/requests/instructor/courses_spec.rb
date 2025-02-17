@@ -102,7 +102,7 @@ RSpec.describe "Instructor::Courses", type: :request do
 
     # it "user must be login as instructor" do
     #   sign_in user,scope: :user
-    #   debugger
+
     #   expect(user_signed_in?).to_true
     # end
 
@@ -290,7 +290,6 @@ RSpec.describe "Instructor::Courses", type: :request do
   #   describe "when user is instructor" do
   #     it "contains chapter" do
   #       delete "/instructor/courses/#{course.id}", as: :json
-  #       debugger
   #       expect(response).to redirect_to instructor_path
   #     end
   #   end

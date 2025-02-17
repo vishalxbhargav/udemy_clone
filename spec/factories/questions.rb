@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :question do
-    title { "MyString" }
-    description { "MyString" }
+    title { Faker::JapaneseMedia::OnePiece.character }
+    description { Faker::JapaneseMedia::OnePiece.location #=> "Foosha Village"
+  }
     user { nil }
     forume { nil }
   end

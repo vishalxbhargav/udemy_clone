@@ -149,11 +149,8 @@ RSpec.describe "Instructor::Chapters", type: :request do
     end
 
     # it "when user isn't authenticated" do
-    #   debugger
     #   sign_out "user/sign_out/#{user.id}"
-    #   get "/instructor/chapters/#{chapter.id}/edit"
-    #   debugger
-    #   expect(response).to redirect_to root_path
+    #   get "/instructor/chapters/#{chapter.id}/edit"    #   expect(response).to redirect_to root_path
     #   expect(response.status).to eq(302)
     # end
 
@@ -270,7 +267,6 @@ RSpec.describe "Instructor::Chapters", type: :request do
   #     describe "as instructor" do
   #       describe "user contain chapter" do
   #         it "delete chapter" do
-  #           debugger
   #           delete "/instructor/chapters/#{chapter.id}"
   #           expect(response.status).to eq(302)
   #           expect(response).to redirect_to instructor_course_path(course)

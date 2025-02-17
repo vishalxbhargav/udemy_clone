@@ -19,6 +19,10 @@ class Ability
               can :create, Forume,{course:{user:{id:user.id}}}
               can :read, Forume,{course:{user:{id:user.id}}}
               can :update, Forume,{course:{user:{id:user.id}}}
+              can [:read,:update],Question do |question|
+                (user.courses&.any?question.forume.course)||(user.enrolled_courses&.any?question.forume.course)
+              end
+              can :create,Question
               can :manage, Verifycation
           else 
               can :read,Progre,{Enrollment:{user:{id:user.id}}}
@@ -26,6 +30,7 @@ class Ability
               can :read,Forume do |forume|
                 user.enrolled_courses&.any?forume.course
               end
+              can :create, Question
               can [:read,:update],Question do |question|
                 user.enrolled_courses&.any?question.forume.course
               end

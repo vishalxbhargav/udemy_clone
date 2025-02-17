@@ -44,7 +44,6 @@ class Instructor::ChaptersController < ApplicationController
     end
 
     def destroy
-        debugger
         if @chapter.destroy
             redirect_to instructor_course_path(@course),notice:"Chapter deleted successfully" 
         else
@@ -75,7 +74,6 @@ class Instructor::ChaptersController < ApplicationController
     end
 
     def set_course
-        debugger
         @course=Course.find_by(id: params[:course_id])
         
         if @course.nil?

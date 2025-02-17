@@ -4,6 +4,7 @@ class Forume::QuestionsController < ApplicationController
     before_action :set_question,only:[:show,:edit,:update,:destroy]
     skip_before_action :verify_authenticity_token
     before_action :authenticate_user!
+    before_action :check_enrolled,only:[:create]
 
     def show
         @question
@@ -46,6 +47,13 @@ class Forume::QuestionsController < ApplicationController
     def set_question
         @question=Question.find_by(id: params[:id])
         render file: "#{Rails.root}/public/course404.html" if @question.nil?
+    end
+
+    def check_enrolled
+        forume=Forume.find(params[:forume_id])
+        redirect_to root_path,notice: "You are not authorized to access this page.
+
+" unless current_user.enrolled_courses&.any?forume.course
     end
 
     def question_params
