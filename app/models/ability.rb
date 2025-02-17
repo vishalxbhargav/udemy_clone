@@ -26,8 +26,14 @@ class Ability
               can :read,Forume do |forume|
                 user.enrolled_courses&.any?forume.course
               end
-              can [:read,:create,:update],Question do |question|
+              can [:read,:update],Question do |question|
                 user.enrolled_courses&.any?question.forume.course
+              end
+              can [:read,:update],Answer do |answer|
+                user.enrolled_courses&.any?answer.question.forume.course
+              end
+              can [:read,:update],Comment do |comment|
+                user.enrolled_courses&.any?comment.answer.question.forume.course
               end
           end
       else

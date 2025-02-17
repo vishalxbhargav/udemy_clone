@@ -1,4 +1,5 @@
 class Forume::AnswersController < ApplicationController
+    load_and_authorize_resource
     layout "forume"
     before_action :set_answer, only: [:show,:edit,:update,:destroy]
     skip_before_action :verify_authenticity_token
