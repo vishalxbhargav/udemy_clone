@@ -1,0 +1,38 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    container_name: postgres_container
+    environment:
+      - POSTGRES_DB=myapp_development
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - app_network
+
+  demo_web:
+    build: .
+    command: "./bin/rails server -b '0.0.0.0'"
+    environment:
+      - stripe_endpoint_secret=whsec_f7d8ca71e95b1901b796a8117bd042c297510e241981cd94e4cb98d8c81b4b8a
+      - GOOGLE_CLIENT_ID=1085917163713-foappuefhcabkticfrv4r9upjesdvd43.apps.googleusercontent.com
+      - GOOGLE_CLIENT_SECRET=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
+      - RAILS_ENV=development
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=myapp_development
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - .:/rails
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
